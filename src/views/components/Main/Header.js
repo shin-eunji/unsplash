@@ -53,7 +53,7 @@ function Header (props) {
                     <Linked>Sustainability</Linked>
                     <Linked>Film</Linked>
                     <Linked>Wallpapers</Linked>
-                    <Link>COVID-19</Link>
+                    <Linked>COVID-19</Linked>
                     <Linked>Travel</Linked>
                     <Linked>Nature</Linked>
                     <Linked>Textures &amp; Patterns</Linked>
