@@ -12,4 +12,4 @@
 - 08월 24일
 - 08월 25일 - 
 - 08월 26일 - Route, login page 
-- 08월 27일 - Join page layout, 빌드
+- 08월 27일 - Join page layout
