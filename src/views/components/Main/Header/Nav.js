@@ -1,41 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import {Link} from "react-router-dom";
+import { NAVIGATION } from './constants'
 
 function Nav (props) {
 
     const {} = props;
+    const [nav, setNav] = useState([])
 
     return (
         <Container>
             <Linked className={"active"}>Editorial</Linked>
-            <List>
-                <Linked>Sustainability</Linked>
-                <Linked>Film</Linked>
-                <Linked>Wallpapers</Linked>
-                <Linked>COVID-19</Linked>
-                <Linked>Travel</Linked>
-                <Linked>Nature</Linked>
-                <Linked>Textures &amp; Patterns</Linked>
-                <Linked>Current Events</Linked>
-                <Linked>People</Linked>
-                <Linked>Business &amp; Work</Linked>
-                <Linked>Technology</Linked>
-                <Linked>Animals</Linked>
-                <Linked>Interiors</Linked>
-                <Linked>Architecture</Linked>
-                <Linked>Texture &amp; Patterns</Linked>
-                <Linked>Current Events</Linked>
-                <Linked>People</Linked>
-                <Linked>Business &amp; Work</Linked>
-
+            <List >
+            {
+                setNav.map((router, index) => <constants key={index} to={NAVIGATION.to}>{NAVIGATION.name}</constants>)
+            }
             </List>
             <Linked className={"all"}>View all</Linked>
         </Container>
     )
 }
 
-const Container = styled.div`
+const Container = styled.nav`
     width: 100%;
     display:flex;
     justify-content: space-around;
