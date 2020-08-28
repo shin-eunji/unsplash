@@ -26,6 +26,19 @@ function TopHeader (props) {
         })
     }
 
+    function useLocalState(localItem) {
+        const [ loc, setState ] = useState(localStorage.getItem(localItem));
+
+        function setLoc(newItem) {
+            localStorage.setItem(localItem, newItem);
+            setState(newItem);
+        }
+
+        return [loc, setLoc];
+    }
+
+    const [ value, setValue ] = useLocalState("search")
+
     return (
         <Container>
             <Logo to={"/"}>
@@ -42,15 +55,21 @@ function TopHeader (props) {
                 <SearchSubmit type={"submit"} onClick={handleSubmit} to={"/search"}>
                     <AiOutlineSearch color={"#666"} size={"26"} />
                 </SearchSubmit>
-                <input onChange={handleChange}
-                       className={"search"}
-                       type="text"
-                       name={"photo"}
-                       placeholder={"Search free high-resolution photos"}
+                <input
+                    onChange={(e) => {
+                        setValue({
+                            ...value,
+                            search: e.target.value
+                        })
+                    }}
+                   className={"search"}
+                   type="text"
+                   name={"photo"}
+                   placeholder={"Search free high-resolution photos"}
                 />
                 {
                     result.map((photo) => {
-                        return <img src={photo.urls.small} alt={"photo"} />
+                        return <img src={photo.urls.small} alt={"photo"} onChange={handleChange}/>
                     })
 
                 }
@@ -131,6 +150,7 @@ const SearchInput = styled.div`
     margin-left: 10px;
     border: 0;
     font-size: 16px;
+    background: none;
   }
 `;
 const SearchSubmit = styled(Link)`

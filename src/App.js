@@ -12,7 +12,6 @@ import Search from "./views/pages/Search";
 function App (props) {
 
     const {
-        photo
     } = props;
 
 
