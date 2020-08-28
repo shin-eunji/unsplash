@@ -9,8 +9,7 @@ function Login (props) {
 
     const [ value, setValue ] = useState([])
 
-    const responseFacebook = (response) => {
-        console.log(response);
+    const responseFacebook = () => {
     }
 
     return (

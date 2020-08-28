@@ -15,7 +15,6 @@ function Content (props) {
         axios.get("https://api.unsplash.com/photos/?client_id=t_jbP7JejOj1keyZ7UiEl1BZcoPHG3vxmy3rPUGhVRc").then(res => {
             const data = res.data;
             setPost(data);
-            console.log("data", data);
         })
     }, [])
 
