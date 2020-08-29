@@ -1,19 +1,26 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {Link} from "react-router-dom";
-import { NAVIGATION } from './constants'
+import { ITEMS } from './Navigation'
+import axios from 'axios'
 
 function Nav (props) {
 
     const {} = props;
     const [nav, setNav] = useState([])
 
+    useEffect(() => {
+        axios.get(ITEMS).then(res => {
+            console.log("res", res);
+        })
+    })
+
     return (
         <Container>
             <Linked className={"active"}>Editorial</Linked>
             <List >
             {
-                setNav.map((router, index) => <constants key={index} to={NAVIGATION.to}>{NAVIGATION.name}</constants>)
+                nav.map((router, index) => <div key={index} to={ITEMS.to}>{ITEMS.name}</div>)
             }
             </List>
             <Linked className={"all"}>View all</Linked>
