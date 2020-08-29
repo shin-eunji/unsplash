@@ -1,26 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {Link} from "react-router-dom";
-import { ITEMS } from './Navigation'
+import { navLinks } from './Navigation'
 import axios from 'axios'
 
 function Nav (props) {
 
     const {} = props;
-    const [nav, setNav] = useState([])
-
-    useEffect(() => {
-        axios.get(ITEMS).then(res => {
-            console.log("res", res);
-        })
-    })
 
     return (
         <Container>
             <Linked className={"active"}>Editorial</Linked>
             <List >
             {
-                nav.map((router, index) => <div key={index} to={ITEMS.to}>{ITEMS.name}</div>)
+                navLinks.map((route, index) => <Item key={index} to={route.to}>{route.name}</Item>)
             }
             </List>
             <Linked className={"all"}>View all</Linked>
@@ -89,4 +82,14 @@ const List = styled.div`
     overflow-y: hidden;
     white-space: nowrap;
 `;
+const Item = styled(Link)`
+  margin: 10px 20px;
+  color: #666;
+  font-size: 15px;
+  font-weight:600;
+  cursor: pointer;
+  &:hover {
+    color: #111;
+  }
+`
 export default Nav;

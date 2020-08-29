@@ -33,6 +33,8 @@ function Content (props) {
 }
 
 const Container = styled.div`
+  position: relative;
+  top: 150px;
   display:flex;
   justify-content:center;
   align-items:center;

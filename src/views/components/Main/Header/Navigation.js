@@ -1,44 +1,89 @@
-export const ITEMS = [
+export const navLinks = [
     {
         to: '/sustainability',
         name: 'Sustainability'
     },
     {
-        to: '/sustainability',
-        name: 'Sustainability'
+        to: '/film',
+        name: 'Film'
     },
     {
-        to: '/sustainability',
-        name: 'Sustainability'
+        to: '/wallpapers',
+        name: 'Wallpapers'
     },
     {
-        to: '/sustainability',
-        name: 'Sustainability'
+        to: '/covid',
+        name: 'COVID-19'
     },
     {
-        to: '/sustainability',
-        name: 'Sustainability'
+        to: '/travel',
+        name: 'Travel'
     },{
-        to: '/sustainability',
-        name: 'Sustainability'
+        to: '/nature',
+        name: 'Nature'
     },{
-        to: '/sustainability',
-        name: 'Sustainability'
+        to: '/textures',
+        name: 'Textures & patterns'
     },
     {
-        to: '/sustainability',
-        name: 'Sustainability'
+        to: '/currentevents',
+        name: 'Current Events'
     },
     {
-        to: '/sustainability',
-        name: 'Sustainability'
+        to: '/people',
+        name: 'People'
     },
     {
-        to: '/sustainability',
-        name: 'Sustainability'
+        to: '/business',
+        name: 'Business & Work'
     },
     {
-        to: '/sustainability',
-        name: 'Sustainability'
+        to: '/technology',
+        name: 'Technology'
+    },
+    {
+        to: '/animals',
+        name: 'Animals'
+    },
+    {
+        to: '/interiors',
+        name: 'Interiors'
+    },
+    {
+        to: '/architecture',
+        name: 'Architecture'
+    },
+    {
+        to: '/fooddrink',
+        name: 'Food & Drink'
+    },
+    {
+        to: '/athletics',
+        name: 'Athletics'
+    },
+    {
+        to: '/spirituality',
+        name: 'Spirituality'
+    },
+
+    {
+        to: '/health',
+        name: 'Health & Wellness'
+    },
+    {
+        to: '/fashion',
+        name: 'Fashion'
+    },
+    {
+        to: '/experimental',
+        name: 'Experimental'
+    },
+    {
+        to: '/arts',
+        name: 'Arts & Culture'
+    },
+    {
+        to: '/history',
+        name: 'History'
     },
 ]
