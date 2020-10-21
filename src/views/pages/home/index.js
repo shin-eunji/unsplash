@@ -1,17 +1,18 @@
 import React from 'react';
 import styled from 'styled-components';
+import Header from "../../components/main/Header";
 
-function Page (props) {
+function Home (props) {
 
     const {} = props;
 
     return (
         <Container>
-            Page
+            <Header/>
         </Container>
     )
 }
 
 const Container = styled.div`
 `
-export default Page;
+export default Home;

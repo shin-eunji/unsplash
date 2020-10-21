@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Post from "./Post";
 import axios from 'axios'
 
-function Content (props) {
+function Contents (props) {
 
     const {
 
@@ -49,4 +49,4 @@ const PostList = styled.div`
 `;
 
 
-export default Content;
+export default Contents;

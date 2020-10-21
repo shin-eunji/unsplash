@@ -6,5 +6,4 @@ const navigate = url => {
     HISTORY.push(url);
 }
 
-
-export {HISTORY, navigate}
+export {HISTORY, navigate};

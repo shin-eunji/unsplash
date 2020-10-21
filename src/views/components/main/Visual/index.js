@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 import {AiOutlineSearch} from "react-icons/ai/index";
 
-function visual (props) {
+function Visual (props) {
 
     const {} = props;
 
@@ -92,4 +92,4 @@ const TagList = styled.div`
     font-weight: 600;
     margin-left: 3px;
 `;
-export default visual;
+export default Visual;

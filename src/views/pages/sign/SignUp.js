@@ -4,7 +4,7 @@ import FacebookLogin from "react-facebook-login";
 
 import {Link} from "react-router-dom";
 
-function Join (props) {
+function SignUp (props) {
 
     const {} = props;
 
@@ -213,4 +213,4 @@ const Input = styled.div`
   }
 `;
 
-export default Join;
+export default SignUp;

@@ -5,7 +5,7 @@ import {Provider} from 'react-redux'
 import store from "./redux/store";
 import {BrowserRouter} from 'react-router-dom'
 import './scss/style.scss'
-import {HISTORY} from "./Helpers/History";
+import {HISTORY} from "./lib/History";
 
 ReactDOM.render(
   <React.StrictMode>
