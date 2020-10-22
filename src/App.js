@@ -3,6 +3,9 @@ import styled from 'styled-components';
 import Routes from "./Routes";
 
 import Header from "./views/components/main/Header";
+import PostDetails from "./views/components/main/Features/PostDetails";
+import {photoActions} from "./redux/actionCreators";
+import {useSelector} from "react-redux";
 
 function App (props) {
 

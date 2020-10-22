@@ -56,7 +56,6 @@ const SContentContainer = styled.div`
     width: ${pxToRem(864)};
     margin: 0 auto;
     z-index: 10;
-    
 `;
 const Text = styled.div`
     display:flex;
@@ -71,12 +70,14 @@ const Title = styled.div`
 `;
 const Description = styled.div`
     font-size: ${pxToRem(18)};
-    font-weight: 500;
+    font-weight: 300;
     margin: ${pxToRem(20)} 0;
     line-height: 1.4;
     a {
         color: #fff;
+        font-weight: 300;
         opacity: .8;
+        text-decoration: underline;
     }
 `;
 const SearchContainer = styled.div`

@@ -33,6 +33,11 @@ const Container = styled(ContentContainer)`
     display:flex;
     flex-direction:row;
     flex-wrap: wrap;
+    //display: grid;
+    //grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    //grid-gap: 0 5px;
+    //grid-auto-rows: 10px;
+    //place-items:center;
 `
 
 export default Contents;

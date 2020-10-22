@@ -2,8 +2,9 @@ import {createActions, createReducer} from 'reduxsauce';
 
 const initialState = {
     post: [],
-    over: false,
-    toggleHover: false,
+    photo: {},
+    toggleOver: false,
+    openPopup: false,
 }
 
 export const Action = createActions({

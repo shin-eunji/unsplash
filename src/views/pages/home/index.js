@@ -6,7 +6,8 @@ import Contents from "../../components/main/Features";
 
 function Home (props) {
 
-    const {} = props;
+    const {
+    } = props;
 
     return (
         <Container>

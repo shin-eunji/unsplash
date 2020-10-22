@@ -1,13 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import {pxToRem} from "../../../../../common/Text/Text.Styled";
+import {navigate} from "../../../../../lib/History";
 
 function Logo (props) {
 
     const {} = props;
 
     return (
-        <Container>
+        <Container onClick={() => navigate('/')}>
             <Img/>
             <Text>
                 Unsplash
@@ -20,6 +21,7 @@ function Logo (props) {
 const Container = styled.h1`
     display:flex;
     align-items:center;
+    cursor: pointer;
 `;
 const Img = styled.div`
     width: ${pxToRem(32)};

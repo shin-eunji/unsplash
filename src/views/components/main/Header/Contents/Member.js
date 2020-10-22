@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import {Button} from "../../../../../common/Button/Button.Styled";
 import {pxToRem, TextLink} from "../../../../../common/Text/Text.Styled";
+import {navigate} from "../../../../../lib/History";
 
 function Member (props) {
 
@@ -9,8 +10,11 @@ function Member (props) {
 
     return (
         <Container>
-            <LoginButton>Login</LoginButton>
-            <JoinButton size={'small'} sort={'green'}>Join free</JoinButton>
+            <LoginButton onClick={() => navigate('/sign/login')}>Login</LoginButton>
+            <JoinButton size={'small'}
+                        sort={'green'}
+                        onClick={() => navigate('/sign/join')}
+            >Join free</JoinButton>
         </Container>
     )
 }

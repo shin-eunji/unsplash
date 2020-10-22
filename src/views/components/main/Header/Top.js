@@ -6,6 +6,7 @@ import Logo from "./Contents/Logo";
 import Search from "../../Search";
 import Menu from "./Contents/Menu";
 import Member from "./Contents/Member";
+import {navigate} from "../../../../lib/History";
 
 function Top(props) {
 
@@ -17,7 +18,7 @@ function Top(props) {
                 <Logo />
 
                 <SearchContainer>
-                    <Search/>
+                    <Search />
                 </SearchContainer>
 
                 <Menu/>

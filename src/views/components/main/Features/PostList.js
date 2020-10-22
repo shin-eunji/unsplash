@@ -11,22 +11,28 @@ function PostList (props) {
         urls,
     } = props;
 
-    const { over, toggleHover } = useSelector(state => state.photo)
+    const { over, openPopup } = useSelector(state => state.photo)
 
-    const handleOver = () => photoActions.updateState({over: true})
-    const ToggleOver = () => photoActions.updateState({toggleHover: !toggleHover})
+    const handleOver = () => photoActions.updateState({toggleOver: true })
+    const handleLeave = () => photoActions.updateState({toggleOver: false})
+
+    const popup = () => photoActions.updateState({openPopup: true})
 
     return (
         <Container>
-            <Photo key={id} onClick={handleOver}>
+            <Photo key={id}
+                   onClick={popup}
+                   onMouseEnter={handleOver}
+                   onMouseLeave={handleLeave}
+            >
+                <img src={urls.small}/>
                 {
                     over &&
-                        <PostDetails over={handleOver}/>
+                        <InfoBox />
                 }
-                <img src={urls.small} onMouseEnter={ToggleOver} onMouseLeave={ToggleOver} />
                 {
-                    toggleHover &&
-                        <InfoBox toggleHover={ToggleOver}/>
+                    openPopup &&
+                        <PostDetails openPopup={popup}/>
                 }
             </Photo>
         </Container>
