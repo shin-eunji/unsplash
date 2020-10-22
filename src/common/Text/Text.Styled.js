@@ -25,8 +25,8 @@ export const message = styled.div`
 `;
 export const TextLink = styled.a`
     color: #767676;
-    font-size: ${pxToRem(16)};
-    font-weight: 500;
+    font-size: ${pxToRem(15)};
+    font-weight: 400;
     cursor: pointer;
     &:hover {
         color: #111;

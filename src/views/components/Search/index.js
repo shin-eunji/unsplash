@@ -21,6 +21,7 @@ const Container = styled.div`
     display:flex;
     align-items:center;
     justify-content: space-between;
+    width: 100%;
     padding: ${pxToRem(4)} ${pxToRem(10)};
 `
 const Icon = styled(AiOutlineSearch)`

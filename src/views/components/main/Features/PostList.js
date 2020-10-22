@@ -1,59 +1,41 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import Popup from "./Popup";
+import PostDetails from "./PostDetails";
+import {useSelector} from "react-redux";
+import {photoActions} from "../../../../redux/actionCreators";
 
-import {AiOutlineArrowDown, AiOutlinePlus, AiTwotoneHeart} from "react-icons/ai";
-
-function Post (props) {
+function PostList (props) {
 
     const {
-        item
+        id,
+        urls,
     } = props;
-    
-    const [ popup, handlePopup ] = useState(false)
 
-    const [ over, handleMouseover ] = useState(false)
+    const { over, toggleHover } = useSelector(state => state.photo)
+
+    const handleOver = () => photoActions.updateState({over: true})
+    const ToggleOver = () => photoActions.updateState({toggleHover: !toggleHover})
 
     return (
         <Container>
-            <Photo
-                onClick={() => {
-                    handlePopup(true)
-                }}
-                onMouseEnter={() => handleMouseover(true)}
-                onMouseLeave={() => handleMouseover(false)}
-                >
+            <Photo key={id} onClick={handleOver}>
                 {
                     over &&
-                    <InfoBox className={"info"}>
-                        <Profile>
-                            <img src="https://images.unsplash.com/profile-1548365137797-3b9f72fd78b2?auto=format&fit=crop&w=32&h=32&q=60&crop=faces&bg=fff" alt="profile"/>
-                            <p>title</p>
-                            <button>
-                                <AiOutlineArrowDown/>
-                            </button>
-                        </Profile>
-                        <Button>
-                            <button>
-                                <AiTwotoneHeart className={"heart"}/>
-                            </button>
-                            <button>
-                                <AiOutlinePlus className={"plus"}/>
-                            </button>
-                        </Button>
-                    </InfoBox>
+                        <PostDetails over={handleOver}/>
                 }
-                <img src={item.urls.small} />
+                <img src={urls.small} onMouseEnter={ToggleOver} onMouseLeave={ToggleOver} />
+                {
+                    toggleHover &&
+                        <InfoBox toggleHover={ToggleOver}/>
+                }
             </Photo>
-            {
-                popup &&
-                <Popup onClose={handlePopup} />
-            }
         </Container>
     )
 }
 
 const Container = styled.div`
+    display:flex;
+    width: 33%;
 `
 const Photo = styled.div`
     position: relative;
@@ -69,6 +51,8 @@ const InfoBox = styled.div`
       left: 0;
       right: 0;
       bottom: 0;
+      width: 100%;
+      height: 100%;
       background: linear-gradient(to top, rgba(0,0,0,.3), rgba(0,0,0,.0), rgba(0,0,0,.3));
       display:flex;
       flex-direction:row;
@@ -134,4 +118,4 @@ const Button = styled.div`
       }  
     }
 `;
-export default Post;
+export default PostList;

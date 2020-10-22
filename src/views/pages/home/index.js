@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import Header from "../../components/main/Header";
+
+import Visual from "../../components/main/Visual";
+import Contents from "../../components/main/Features";
 
 function Home (props) {
 
@@ -8,7 +10,8 @@ function Home (props) {
 
     return (
         <Container>
-            <Header/>
+            <Visual />
+            <Contents/>
         </Container>
     )
 }
