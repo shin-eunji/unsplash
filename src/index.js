@@ -8,12 +8,12 @@ import './scss/style.scss'
 import {HISTORY} from "./lib/History";
 
 ReactDOM.render(
-  <React.StrictMode>
-      <Provider store={store}>
-          <BrowserRouter history={HISTORY}>
-            <App />
-          </BrowserRouter>
-      </Provider>
-  </React.StrictMode>,
+    <React.StrictMode>
+        <Provider store={store}>
+            <BrowserRouter history={HISTORY}>
+                <App />
+            </BrowserRouter>
+        </Provider>
+</React.StrictMode>,
   document.getElementById('root')
 );

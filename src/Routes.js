@@ -17,10 +17,10 @@ function Routes (props) {
     return (
         <Container>
             <Switch>
-                <Route path={'/'} component={Home} />
+                <Route exact path={'/'} component={Home} />
                 <Route path={'/photo'} component={Details} />
 
-                <Route path={'/sign'} component={Sign} />
+                <Route exact path={'/sign'} component={Sign} />
                 <Route path={'/sign/login'} component={SignIn}/>
                 <Route path={'/sign/join'} component={SignUp}/>
             </Switch>
