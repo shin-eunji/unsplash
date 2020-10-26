@@ -2,11 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 import {Route, Switch} from "react-router-dom";
 
-import Home from "./views/pages/home";
+import Home from "./views/pages/Home";
 import Details from "./views/pages/Details/Details";
-import Sign from "./views/pages/sign";
-import SignIn from "./views/pages/sign/SignIn";
-import SignUp from "./views/pages/sign/SignUp";
+import Sign from "./views/pages/Sign";
+import SignIn from "./views/pages/Sign/SignIn";
+import SignUp from "./views/pages/Sign/SignUp";
 
 
 function Routes (props) {
@@ -18,11 +18,11 @@ function Routes (props) {
         <Container>
             <Switch>
                 <Route exact path={'/'} component={Home} />
-                <Route path={'/photo'} component={Details} />
+                <Route exact path={'/photo'} component={Details} />
 
-                <Route exact path={'/sign'} component={Sign} />
-                <Route path={'/sign/login'} component={SignIn}/>
-                <Route path={'/sign/join'} component={SignUp}/>
+                <Route exact path={'/Sign'} component={Sign} />
+                <Route path={'/Sign/login'} component={SignIn}/>
+                <Route path={'/Sign/join'} component={SignUp}/>
             </Switch>
         </Container>
     )

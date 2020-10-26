@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {navLinks} from "../../data/Navigation";
+import {navLinks} from "./Contents/Navigation";
 import NavItem from "./Contents/NavItem";
 import {pxToRem, TextLink} from "../../../../common/Text/Text.Styled";
 

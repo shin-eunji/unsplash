@@ -26,6 +26,7 @@ function Search(props) {
             .then(res => {
                 navigate('/photo')
                 setResult(res.data.results)
+                console.log("photo", setResult);
             })
     }
 
@@ -44,7 +45,7 @@ function Search(props) {
                    onKeyPress={handleKeyPress}
             />
             {
-                result.map((photo, route) => <Details {...photo} route={route}/>)
+                result.map((item) => <Details {...item} />)
             }
         </Container>
     )

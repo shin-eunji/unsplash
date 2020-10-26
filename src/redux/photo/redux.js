@@ -5,6 +5,7 @@ const initialState = {
     photo: {},
     toggleOver: false,
     openPopup: false,
+    over: false,
 }
 
 export const Action = createActions({

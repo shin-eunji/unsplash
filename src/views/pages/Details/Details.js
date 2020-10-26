@@ -4,16 +4,14 @@ import styled from 'styled-components';
 function Details (props) {
 
     const {
-        imageRef,
-        urls,
-        alt_description
+        photo,
     } = props;
+    
+    console.log("photo", photo);
 
     return (
         <Container>
-            <img ref={imageRef}
-                 src={urls.small}
-                 alt={alt_description}/>
+            <img src={photo.urls.small} />
         </Container>
     )
 }

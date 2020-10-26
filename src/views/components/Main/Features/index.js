@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import PostList from "./PostList";
+import PhotosList from "./PhotosList";
 import axios from 'axios'
 import {ContentContainer} from "../../../../common/Layout/Components.Styled";
 import {pxToRem} from "../../../../common/Text/Text.Styled";
@@ -21,7 +21,7 @@ function Contents () {
     return (
         <Container>
             {
-                post.map((item, index) => <PostList key={index} {...item}/>)
+                post.map((item, index) => <PhotosList key={index} {...item}/>)
             }
         </Container>
     )
@@ -30,14 +30,15 @@ function Contents () {
 const Container = styled(ContentContainer)`
     position: relative;
     top: ${pxToRem(60)};
-    display:flex;
-    flex-direction:row;
-    flex-wrap: wrap;
-    //display: grid;
-    //grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    //grid-gap: 0 5px;
-    //grid-auto-rows: 10px;
-    //place-items:center;
+    
+    line-height: 0;
+    margin-top: 10px;
+    -webkit-column-count: 4;
+    -webkit-column-gap: 0px;
+    -moz-column-count: 4;
+    -moz-column-gap: 0px;
+    column-count: 3;
+    column-gap: 10px;
 `
 
 export default Contents;

@@ -5,7 +5,7 @@ import {ContentContainer} from "../../../../common/Layout/Components.Styled";
 import {pxToRem} from "../../../../common/Text/Text.Styled";
 import {AiOutlineClose} from "react-icons/all";
 
-function PostDetails (props) {
+function PhotoPopup (props) {
 
     const {
     } = props;
@@ -65,4 +65,4 @@ const ButtonClose = styled.button`
     border: none;
     background: none;
 `;
-export default PostDetails;
+export default PhotoPopup;

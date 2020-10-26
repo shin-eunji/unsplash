@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Routes from "./Routes";
 
-import Header from "./views/components/main/Header";
+import Header from "./views/components/Main/Header";
 
 function App (props) {
 

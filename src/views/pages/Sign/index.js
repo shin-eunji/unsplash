@@ -12,8 +12,8 @@ function Sign (props) {
     return (
         <Container>
             <Switch>
-                <Route path={'/sign/login'} component={SignIn}/>
-                <Route path={'/sign/join'} component={SignUp}/>
+                <Route path={'/Sign/login'} component={SignIn}/>
+                <Route path={'/Sign/join'} component={SignUp}/>
             </Switch>
         </Container>
     )
