@@ -6,6 +6,7 @@ const initialState = {
     photoDetail: false,
     toggleOver: false,
     over: false,
+    quickMenu: false,
 }
 
 export const Action = createActions({

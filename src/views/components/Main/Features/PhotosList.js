@@ -25,10 +25,6 @@ function PhotosList(props) {
                 <PhotoPopup photoDetail={openPopup} urls={urls}/>
             }
             <img src={urls.small} />
-                {/*{*/}
-                {/*    hover &&*/}
-                {/*    <PhotoOver />*/}
-                {/*}*/}
         </Container>
     )
 }

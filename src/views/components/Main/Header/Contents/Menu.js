@@ -3,17 +3,30 @@ import styled from 'styled-components';
 import {AiOutlineEllipsis} from 'react-icons/ai'
 import {pxToRem, TextLink} from "../../../../../common/Text/Text.Styled";
 import {Button} from "../../../../../common/Button/Button.Styled";
+import {photoActions} from "../../../../../redux/actionCreators";
+import {useSelector} from "react-redux";
+import QuickMenu from "./QuickMenu";
 
 function Menu (props) {
 
     const {} = props;
+
+    const { quickMenu } = useSelector(state => state.photo)
+
+    const handleMore = () => {
+        photoActions.updateState({ quickMenu: !quickMenu })
+    }
 
     return (
         <Container>
             <MenuItem>Explore</MenuItem>
             <MenuItem>Unsplash Awards</MenuItem>
             <MenuItem>
-                <Icon/>
+                <Icon onClick={handleMore}/>
+                {
+                    quickMenu &&
+                        <QuickMenu/>
+                }
             </MenuItem>
             <PhotoButton sort={'line'}>Submit a photo</PhotoButton>
         </Container>
