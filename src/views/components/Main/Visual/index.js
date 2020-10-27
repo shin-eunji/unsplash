@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Search from "../../Search";
 import {Color} from "../../../../common/Color/Color.Styled";
 import {pxToRem} from "../../../../common/Text/Text.Styled";
+import Thumbnail from "./Thumbnail";
 
 
 function Visual(props) {
@@ -27,6 +28,7 @@ function Visual(props) {
                     <TagItem/>
                 </Tag>
             </SContentContainer>
+            <Thumbnail/>
         </Container>
     )
 }

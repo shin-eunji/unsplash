@@ -4,22 +4,27 @@ import {photoActions} from "../../../../redux/actionCreators";
 import {ContentContainer} from "../../../../common/Layout/Components.Styled";
 import {pxToRem} from "../../../../common/Text/Text.Styled";
 import {AiOutlineClose} from "react-icons/all";
+import Photo from "./Photo";
+import Collections from "./Collections";
+import Profile from "./Profile";
 
 function PhotoPopup (props) {
 
     const {
+        photoDetail,
+        urls,
     } = props;
 
-    const onClose = () => {
-        photoActions.updateState({over: false})
-    }
+    const closePopup = () => photoActions.updateState({photoDetail: false});
 
     return (
-        <Container onClick={onClose}>
+        <Container onClick={() => photoActions.updateState({photoDetail: !photoDetail})}>
             <SContentContainer>
-
+                <Profile/>
+                <Photo urls={urls} />
+                <Collections/>
             </SContentContainer>
-            <ButtonClose onClick={onClose}>
+            <ButtonClose onClick={closePopup}>
                 <AiOutlineClose/>
             </ButtonClose>
         </Container>
@@ -46,12 +51,15 @@ const SContentContainer = styled(ContentContainer)`
     left: 0;
     bottom: 0;
     display:flex;
+    flex-direction:column;
     align-items:center;
-    justify-content:center;
+    justify-content:flex-start;
     width: 80%;
     height: 80%;
     background: #fff;
     border-radius: ${pxToRem(6)};
+    padding: ${pxToRem(14)};
+    overflow-y: auto;
 `;
 const ButtonClose = styled.button`
     position: absolute;
@@ -64,5 +72,6 @@ const ButtonClose = styled.button`
     z-index: 101;
     border: none;
     background: none;
+    cursor: pointer;
 `;
 export default PhotoPopup;

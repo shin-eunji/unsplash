@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import {AiOutlineArrowDown, AiOutlinePlus, AiTwotoneHeart} from "react-icons/all";
+import {AiOutlineArrowDown, AiOutlinePlus, GoHeart} from "react-icons/all";
 import {pxToRem} from "../../../../common/Text/Text.Styled";
 
 function PhotoOver (props) {
@@ -14,7 +14,7 @@ function PhotoOver (props) {
         <Container>
             <ButtonGroup>
                 <Button>
-                    <AiTwotoneHeart/>
+                    <GoHeart/>
                 </Button>
                 <Button>
                     <AiOutlinePlus/>
@@ -60,13 +60,17 @@ const Button = styled.div`
     justify-content:center;
     width: ${pxToRem(40)};
     height: ${pxToRem(32)};
-    background: #fff;
-    border: 1px solid #aaa;
+    background: rgba(255,255,255,.9);
     border-radius: ${pxToRem(5)};
     color: #767676;
     line-height: 0;
     margin-left: ${pxToRem(10)};
-    
+    border: none;
+    cursor: pointer;
+    &:hover {
+          background: #fff;
+          color: #000;
+    }
 `;
 const ProfileGroup = styled.div`
     display:flex;
@@ -79,8 +83,8 @@ const Profile = styled.div`
     justify-content:flex-start; 
 `;
 const ProfileImage = styled.div`
-    width: ${pxToRem(20)};
-    height: ${pxToRem(20)};
+    width: ${pxToRem(32)};
+    height: ${pxToRem(32)};
     border: 1px solid #eee;
     border-radius: ${pxToRem(30)};
     background: #fff;
@@ -96,10 +100,15 @@ const UserName = styled.div`
 const DownloadButton = styled.button`
     width: ${pxToRem(40)};
     height: ${pxToRem(32)};
-    background: #fff;
-    border: 1px solid #aaa;
+    background: rgba(255,255,255,.9);
     border-radius: ${pxToRem(5)};
     line-height: 0;
     color: #767676;
+    border: none;
+    cursor: pointer;
+    &:hover {
+          background: #fff;
+          color: #000;
+    }
 `;
 export default PhotoOver;

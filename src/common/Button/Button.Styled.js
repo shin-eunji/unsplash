@@ -26,14 +26,11 @@ export const ButtonGroup = styled.div`
     
 `;
 
-
 export const Button = styled.button`
     position:relative;
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size: ${pxToRem(18)};
-    font-weight:bold;
     background-color: transparent;
     background-image: none;
     white-space: nowrap;
@@ -87,22 +84,16 @@ export const Button = styled.button`
         font-weight: 500;
         background: #fff;
     `}
-    
     ${props => props.full && `
         width: 100%;
     `}
     ${props => props.size === 'small' && `
-        width: ${pxToRem(80)};   
+        width: 100%;
         height: ${pxToRem(32)};
         font-size: ${pxToRem(14)};
         font-weight: 400;
-        line-height: 1.18;  
-    `}
-    ${props => props.size === 'smallMedium' && `
-        width: ${pxToRem(150)};   
-        height: ${pxToRem(50)};
-        font-size: ${pxToRem(16)};
-        line-height: 1.18;  
+        line-height: 1.18;
+        padding: 0 ${pxToRem(11)};
     `}
     ${props => props.size === 'medium' && `
         width: ${pxToRem(246)};   

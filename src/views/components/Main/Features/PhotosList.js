@@ -1,7 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import PhotoPopup from "./PhotoPopup";
-import PhotoOver from "./PhotoOver";
+import PhotoPopup from "../Popup";
 
 import {useSelector} from "react-redux";
 import {photoActions} from "../../../../redux/actionCreators";
@@ -14,24 +13,22 @@ function PhotosList(props) {
         urls,
     } = props;
 
-    const {over, openPopup} = useSelector(state => state.photo)
-
-    const hover = () => photoActions.updateState({over: true})
-    const popup = () => photoActions.updateState({openPopup: true})
+    const { photoDetail } = useSelector(state => state.photo);
+    const openPopup = () => photoActions.updateState({photoDetail: true});
 
     return (
         <Container key={id}
-                   onClick={popup}
+                   onClick={openPopup}
         >
-            <img src={urls.small}/>
-                {
-                    hover &&
-                    <PhotoOver />
-                }
-                {
-                    openPopup &&
-                    <PhotoPopup openPopup={popup}/>
-                }
+            {
+                photoDetail &&
+                <PhotoPopup photoDetail={openPopup} urls={urls}/>
+            }
+            <img src={urls.small} />
+                {/*{*/}
+                {/*    hover &&*/}
+                {/*    <PhotoOver />*/}
+                {/*}*/}
         </Container>
     )
 }
@@ -45,7 +42,7 @@ const Container = styled.div`
     display: block;
     width: 100%;
     height: auto;
-    margin-bottom: ${pxToRem(10)};
+    margin-bottom: ${pxToRem(20)};
     cursor: zoom-in;
     img {
         position:relative;

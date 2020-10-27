@@ -3,8 +3,8 @@ import {createActions, createReducer} from 'reduxsauce';
 const initialState = {
     post: [],
     photo: {},
+    photoDetail: false,
     toggleOver: false,
-    openPopup: false,
     over: false,
 }
 

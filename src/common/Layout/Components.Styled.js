@@ -8,7 +8,7 @@ export const customMedia = generateMedia({
 });
 
 export const ContentContainer = styled.div`
-    width: 1170px;
+    width: 1320px;
     padding: 0 20px;
     margin: 0 auto;
     
