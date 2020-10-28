@@ -18,11 +18,11 @@ function SubTitle (props) {
 }
 
 const Container = styled.div`
+    margin-bottom: ${pxToRem(32)};
 `
 const Text = styled.div`
     color: #111;
     font-size: ${pxToRem(28)};
     font-weight: 700;
-    margin-bottom: ${pxToRem(32)};
 `;
 export default SubTitle;

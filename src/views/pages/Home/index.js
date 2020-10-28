@@ -18,5 +18,9 @@ function Home (props) {
 }
 
 const Container = styled.div`
+    position:relative;
+    top: 0;
+    right: 0;
+    height: 100%;
 `
 export default Home;

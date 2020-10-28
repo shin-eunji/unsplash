@@ -24,10 +24,10 @@ function Title (props) {
 }
 
 const Container = styled.div`
+    margin: ${pxToRem(72)} 0;
 `
 const Text = styled.div`
     color: #111;
-    margin-bottom: ${pxToRem(72)};
     h2 {
         font-size: ${pxToRem(46)};
         font-weight: 700;

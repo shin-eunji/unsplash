@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {navLinks} from "./Contents/Navigation";
 import NavItem from "./Contents/NavItem";
 import {pxToRem, TextLink} from "../../../../common/Text/Text.Styled";
+import {navigate} from "../../../../lib/History";
 
 function Nav (props) {
 
@@ -10,14 +11,14 @@ function Nav (props) {
 
     return (
         <Container>
-            <Item>Editorial</Item>
+            <Item onClick={() => navigate('/')}>Editorial</Item>
             <Menu>
                 
                 {
                     navLinks.map((item, index) => <NavItem key={index} {...item}/>)
                 }
             </Menu>
-            <Item>View all</Item>
+            <Item onClick={() => navigate('/topics')}>View all</Item>
         </Container>
     )
 }
@@ -47,6 +48,7 @@ const Menu = styled.div`
     overflow: hidden;
     overflow-x: scroll;
     padding-right: ${pxToRem(120)};
+    margin: 0 ${pxToRem(60)} 0 ${pxToRem(16)};
     > * &:last-child {
         padding-right: ${pxToRem(32)};
     }
