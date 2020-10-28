@@ -60,7 +60,7 @@ const Menu = styled.div`
         background: #aaa;
         margin: ${pxToRem(12)} 0;
     }
-    &:after {
+    &::after {
         content: "";
         position: absolute;
         top: 0;

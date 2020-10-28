@@ -7,6 +7,7 @@ import Details from "./views/pages/Details/Details";
 import Sign from "./views/pages/Sign";
 import SignIn from "./views/pages/Sign/SignIn";
 import SignUp from "./views/pages/Sign/SignUp";
+import Explore from "./views/pages/Explore";
 
 
 function Routes (props) {
@@ -19,6 +20,7 @@ function Routes (props) {
             <Switch>
                 <Route exact path={'/'} component={Home} />
                 <Route exact path={'/photo'} component={Details} />
+                <Route exact path={'/explore'} component={Explore} />
 
                 <Route exact path={'/Sign'} component={Sign} />
                 <Route path={'/Sign/login'} component={SignIn}/>

@@ -4,14 +4,13 @@ import styled from 'styled-components';
 function Details (props) {
 
     const {
-        photo,
+        id
     } = props;
     
-    console.log("photo", photo);
 
     return (
         <Container>
-            <img src={photo.urls.small} />
+            <img key={id} />
         </Container>
     )
 }

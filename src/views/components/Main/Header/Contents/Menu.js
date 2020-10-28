@@ -6,6 +6,7 @@ import {Button} from "../../../../../common/Button/Button.Styled";
 import {photoActions} from "../../../../../redux/actionCreators";
 import {useSelector} from "react-redux";
 import QuickMenu from "./QuickMenu";
+import {navigate} from "../../../../../lib/History";
 
 function Menu (props) {
 
@@ -19,7 +20,7 @@ function Menu (props) {
 
     return (
         <Container>
-            <MenuItem>Explore</MenuItem>
+            <MenuItem onClick={() => navigate('/explore')}>Explore</MenuItem>
             <MenuItem>Unsplash Awards</MenuItem>
             <MenuItem>
                 <Icon onClick={handleMore}/>

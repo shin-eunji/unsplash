@@ -18,15 +18,15 @@ function Search(props) {
     const handleChange = (e) => {
         setPhoto(e.target.value);
     }
+
     const handleSubmit = () => {
-        console.log(photo);
 
         const url = `https://api.unsplash.com/search/photos?page=1&query=${photo}&client_id=${clientId}`
         axios.get(url)
             .then(res => {
                 navigate('/photo')
+                console.log("photo", res);
                 setResult(res.data.results)
-                console.log("photo", setResult);
             })
     }
 
@@ -45,7 +45,7 @@ function Search(props) {
                    onKeyPress={handleKeyPress}
             />
             {
-                result.map((item) => <Details {...item} />)
+                result.map((item, index) => <Details {...item} />)
             }
         </Container>
     )
@@ -75,8 +75,5 @@ const Input = styled.input`
     border: none;
     background: none;
     margin-left: ${pxToRem(10)};
-`;
-const Button = styled.button`
-    
 `;
 export default Search;

@@ -5,7 +5,7 @@ import axios from 'axios'
 import {ContentContainer} from "../../../../common/Layout/Components.Styled";
 import {pxToRem} from "../../../../common/Text/Text.Styled";
 
-function Contents () {
+function Features () {
 
     const [post, setPost] = useState([])
 
@@ -37,4 +37,4 @@ const Container = styled(ContentContainer)`
     row-gap: ${pxToRem(20)};
 `
 
-export default Contents;
+export default Features;

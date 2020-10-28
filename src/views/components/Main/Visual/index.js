@@ -41,7 +41,7 @@ const Container = styled.div`
     justify-content:center;
     height: ${pxToRem(600)};
     margin-top: ${pxToRem(112)};
-    background: url("https://images.unsplash.com/photo-1517059224940-d4af9eec41b7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1467&q=80") 50% 70% / cover no-repeat;
+    background: url("https://source.unsplash.com/category/nature/1600x900") 50% 70% / cover no-repeat;
     &:before {
         content: '';
         position:absolute;

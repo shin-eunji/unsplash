@@ -6,7 +6,6 @@ import Logo from "./Contents/Logo";
 import Search from "../../Search";
 import Menu from "./Contents/Menu";
 import Member from "./Contents/Member";
-import {navigate} from "../../../../lib/History";
 
 function Top(props) {
 

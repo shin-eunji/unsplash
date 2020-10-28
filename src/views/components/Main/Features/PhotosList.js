@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import PhotoPopup from "../Popup";
 
 import {useSelector} from "react-redux";
 import {photoActions} from "../../../../redux/actionCreators";
 import {pxToRem} from "../../../../common/Text/Text.Styled";
+import PhotoOver from "./PhotoOver";
 
 function PhotosList(props) {
 
@@ -13,16 +14,23 @@ function PhotosList(props) {
         urls,
     } = props;
 
+    const [ over, handleMouseover ] = useState(false)
+
     const { photoDetail } = useSelector(state => state.photo);
     const openPopup = () => photoActions.updateState({photoDetail: true});
 
     return (
         <Container key={id}
                    onClick={openPopup}
+                   onMouseEnter={() => handleMouseover(true)}
+                   onMouseLeave={() => handleMouseover(false)}
         >
             {
                 photoDetail &&
                 <PhotoPopup photoDetail={openPopup} urls={urls}/>
+            }
+            {
+                over && <PhotoOver/>
             }
             <img src={urls.small} />
         </Container>
