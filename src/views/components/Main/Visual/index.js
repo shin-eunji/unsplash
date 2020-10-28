@@ -4,6 +4,7 @@ import Search from "../../Search";
 import {Color} from "../../../../common/Color/Color.Styled";
 import {pxToRem} from "../../../../common/Text/Text.Styled";
 import Thumbnail from "./Thumbnail";
+import Tag from "./Tag";
 
 
 function Visual(props) {
@@ -23,10 +24,7 @@ function Visual(props) {
                     <Search/>
                 </SearchContainer>
 
-                <Tag>
-                    <TagTitle>Trending:</TagTitle>
-                    <TagItem/>
-                </Tag>
+                <Tag/>
             </SContentContainer>
             <Thumbnail/>
         </Container>
@@ -90,21 +88,5 @@ const SearchContainer = styled.div`
     background: #fff;
     border-radius: ${pxToRem(5)};
     padding: ${pxToRem(6)} ${pxToRem(10)};
-`;
-const Tag = styled.div`
-    font-size: ${pxToRem(15)};
-    font-weight: 600;
-    display:flex;
-    flex-direction:row;
-    align-items:center;
-    margin: ${pxToRem(10)} 0;
-    color: ${Color.WHITE};
-`;
-const TagItem = styled.div`
-    font-weight: 600;
-    margin-left: 3px;
-`;
-const TagTitle = styled.div`
-    
 `;
 export default Visual;

@@ -24,6 +24,7 @@ const Container = styled.div`
     font-size: ${pxToRem(15)};
     font-weight: 400;
     margin-bottom: ${pxToRem(8)};
+    cursor: pointer;
 `
 const Text = styled.div`
 `;

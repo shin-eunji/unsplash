@@ -24,7 +24,7 @@ function Search(props) {
         const url = `https://api.unsplash.com/search/photos?page=1&query=${photo}&client_id=${clientId}`
         axios.get(url)
             .then(res => {
-                navigate('/photo')
+                navigate(`/photos/${photo}`)
                 console.log("photo", res);
                 setResult(res.data.results)
             })
