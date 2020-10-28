@@ -8,7 +8,7 @@ import Sign from "./views/pages/Sign";
 import SignIn from "./views/pages/Sign/SignIn";
 import SignUp from "./views/pages/Sign/SignUp";
 import Explore from "./views/pages/Explore";
-import Topics from "./views/pages/Topics";
+import Topics from "./views/pages/Topics/Topics";
 
 
 function Routes (props) {

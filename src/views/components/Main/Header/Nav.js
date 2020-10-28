@@ -45,7 +45,6 @@ const Menu = styled.div`
     align-items:center;
     width: calc(100% + 7.5rem);
     height: 100%;
-    overflow: hidden;
     overflow-x: scroll;
     padding-right: ${pxToRem(120)};
     margin: 0 ${pxToRem(60)} 0 ${pxToRem(16)};
