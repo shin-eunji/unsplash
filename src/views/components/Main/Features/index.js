@@ -1,9 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import PhotosList from "./PhotosList";
 import axios from 'axios'
+
 import {ContentContainer} from "../../../../common/Layout/Components.Styled";
 import {pxToRem} from "../../../../common/Text/Text.Styled";
+
+import PhotosList from "./PhotosList";
 
 function Features () {
 

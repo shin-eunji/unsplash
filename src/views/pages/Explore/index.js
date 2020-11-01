@@ -1,15 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import Title from "../../components/Text/Title/Title";
+
+import {pxToRem} from "../../../common/Text/Text.Styled";
 import {Index, subTitle} from "../../components/Text/Title";
 import {ContentContainer} from "../../../common/Layout/Components.Styled";
-import {pxToRem} from "../../../common/Text/Text.Styled";
+import {category} from "../../components/Category/CategoryList";
+
 import SubTitle from "../../components/Text/Title/SubTitle";
-import PhotosList from "../../components/Main/Features/PhotosList";
-import axios from "axios";
 import Features from "../../components/Main/Features";
-import CardList from "../../components/Card/CardList";
-import {cardList} from "../../components/Card";
+import Category from "../../components/Category/Category";
 
 function Explore (props) {
 
@@ -21,7 +21,7 @@ function Explore (props) {
                 <Title data={Index.explore}/>
 
                 <SubTitle data={subTitle.browse}/>
-                <CardList data={cardList}/>
+                <Category data={category}/>
 
                 <SubTitle data={subTitle.free}/>
                 <Features/>

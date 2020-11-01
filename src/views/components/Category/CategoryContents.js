@@ -1,9 +1,8 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
 import {pxToRem} from "../../../common/Text/Text.Styled";
-import PhotoOver from "../Main/Features/PhotoOver";
 
-function Card (props) {
+function CategoryContents (props) {
 
     const {
         image,
@@ -114,4 +113,4 @@ const TagName = styled.div`
     padding: ${pxToRem(8)};
     margin-right: ${pxToRem(10)};
 `;
-export default Card;
+export default CategoryContents;

@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import Card from "./Card";
+import CategoryContents from "./CategoryContents";
 import {pxToRem} from "../../../common/Text/Text.Styled";
 
-function CardList (props) {
+function Category (props) {
 
     const {
         data
@@ -12,7 +12,7 @@ function CardList (props) {
     return (
         <Container>
             {
-                data.map((item, index) => <Card key={index} {...item} /> )
+                data.map((item, index) => <CategoryContents key={index} {...item} /> )
             }
         </Container>
     )
@@ -24,4 +24,4 @@ const Container = styled.div`
     justify-content: space-between;
     margin-bottom: ${pxToRem(72)};  
 `
-export default CardList;
+export default Category;

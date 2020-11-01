@@ -1,4 +1,4 @@
-export const cardList = [
+export const category = [
     {
         image: 'https://images.unsplash.com/photo-1536599018102-9f803c140fc1?auto=format&fit=crop&w=440&h=220&q=60',
         title: 'Background',
