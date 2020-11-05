@@ -7,6 +7,7 @@ const initialState = {
     toggleOver: false,
     over: false,
     quickMenu: false,
+    mouseOver: false
 }
 
 export const Action = createActions({

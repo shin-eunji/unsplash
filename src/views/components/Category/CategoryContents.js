@@ -39,6 +39,12 @@ const Container = styled.div`
     flex-direction:column;
     align-items:flex-start;
     margin: 0 ${pxToRem(12)};
+    &:first-child {
+        margin-left: 0;
+    }
+    &:last-child {
+        margin-right: 0;
+    }
 `
 const Image = styled.div`
     position:relative;

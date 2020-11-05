@@ -6,45 +6,82 @@ import {MdPhoto} from "react-icons/all";
 function TopicsCard (props) {
 
     const {
-        image,
-        tagName,
-        thumbnail,
+        title,
         description,
-        counter,
+        total_photos,
+        cover_photo,
+        status,
     } = props;
+
+    const counter = num => (num/1000).toFixed(0) + 'K';
+
 
     return (
         <Container>
-            <img src={image} alt=""/>
+            <Preview>
+                <img src={cover_photo.urls.small} height={'180'}/>
+            </Preview>
             <Text>
                 <Title>
                     <Tag>
-                        <TagName>{tagName}</TagName>
-                        <Thumbnail>{thumbnail}</Thumbnail>
+                        <TagName>{title}</TagName>
+                        <Thumbnail>by Unsplash</Thumbnail>
                     </Tag>
                     <Profile></Profile>
                 </Title>
                 <Description>{description}</Description>
                 <PhotoCounter>
                     <MdPhoto color={'#d1d1d1'}/>
-                    <Counter>{counter}</Counter>
+                    <Counter>{total_photos} contributions</Counter>
+                    {
+                        total_photos == counter
+                    }
                 </PhotoCounter>
             </Text>
+            <Status>
+                <span></span>
+                {status}
+            </Status>
         </Container>
     )
 }
 
 const Container = styled.div`
+    position:relative;
     flex: 1 0 30%;
     border-radius: ${pxToRem(8)};
     box-shadow: 0px 0px 10px 5px rgba(0,0,0,.05);
     margin: ${pxToRem(12)};
+`;
+const Preview = styled.div`
+    position:relative;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: ${pxToRem(124)};
+    border-top-left-radius: ${pxToRem(8)};
+    border-top-right-radius: ${pxToRem(8)};
+    overflow:hidden;
     img {
+        position: absolute;
+        top: -60%;
+        right: 0;
+        left: 0;
         width: 100%;
-        height: ${pxToRem(130)};
-        background: url('https://images.unsplash.com/reserve/nTr1589kTgyXCOdStCGm_MikaRuusunen.jpg?ixlib=rb-1.2.1&auto=format&fit=crop&w=438&h=136.875&q=60');
-        border-top-left-radius: ${pxToRem(8)};
-        border-top-right-radius: ${pxToRem(8)};
+        height: auto;
+        z-index: 9;
+    }
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        background: rgba(0,0,0,.2);
+        z-index: 10;
     }
 `;
 const Text = styled.div`
@@ -107,5 +144,30 @@ const Counter = styled.div`
     color: #111;
     font-size: ${pxToRem(14)};
     font-weight: 500;
+`;
+const Status = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position: absolute;
+    top: ${pxToRem(16)};
+    left: ${pxToRem(16)};
+    width: ${pxToRem(66)};
+    height: ${pxToRem(24)};
+    border-radius: 3px;
+    background-color: #c2ebd3;
+    --circle-color: #3cb46e;
+    color: #111;
+    font-size: ${pxToRem(14)};
+    font-weight: 400;  
+    z-index: 30;
+    span {
+        width: ${pxToRem(8)};
+        height: ${pxToRem(8)};
+        border-radius: 100%;
+        background-color: var(--circle-color);
+        display: inline-block;
+        margin-right: ${pxToRem(6)};
+    }
 `;
 export default TopicsCard;

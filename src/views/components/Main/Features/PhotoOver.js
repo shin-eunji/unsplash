@@ -3,15 +3,17 @@ import styled from 'styled-components';
 
 import {AiOutlineArrowDown, AiOutlinePlus, GoHeart} from "react-icons/all";
 import {pxToRem} from "../../../../common/Text/Text.Styled";
+import {photoActions} from "../../../../redux/actionCreators";
 
 function PhotoOver (props) {
 
     const {
-        user
     } = props;
 
+    const closePopup = () => photoActions.updateState({over: false});
+
     return (
-        <Container>
+        <Container onClick={closePopup}>
             <ButtonGroup>
                 <Button>
                     <GoHeart/>
