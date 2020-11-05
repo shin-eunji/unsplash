@@ -40,6 +40,7 @@ const Container = styled.div`
     height: ${pxToRem(600)};
     margin-top: ${pxToRem(112)};
     background: url("https://source.unsplash.com/category/nature/1600x900") 50% 70% / cover no-repeat;
+    margin-bottom: ${pxToRem(48)};
     &:before {
         content: '';
         position:absolute;

@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import axios from "axios";
-import PhotosList from "../Features/PhotosList";
 import {pxToRem} from "../../../../common/Text/Text.Styled";
 
 function Collections (props) {

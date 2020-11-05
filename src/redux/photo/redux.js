@@ -13,6 +13,7 @@ const initialState = {
 export const Action = createActions({
     updateState: ['state'],
     searchPhoto: ['keyword'],
+    listPhoto: ['data']
 }, {prefix: 'PHOTO/'})
 
 export const reducer = createReducer(initialState, {
