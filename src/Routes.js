@@ -29,8 +29,8 @@ function Routes (props) {
 
 
                 <Route exact path={'/Sign'} component={Sign} />
-                <Route path={'/Sign/login'} component={SignIn}/>
-                <Route path={'/Sign/join'} component={SignUp}/>
+                <Route path={'/sign/login'} component={SignIn}/>
+                <Route path={'/sign/join'} component={SignUp}/>
 
             </Switch>
         </Container>

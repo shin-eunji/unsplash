@@ -1,173 +1,161 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import FacebookLogin from 'react-facebook-login';
-import {Link} from "react-router-dom";
+import {navigate} from "../../../lib/History";
+import {pxToRem} from "../../../common/Text/Text.Styled";
+import {ContentContainer} from "../../../common/Layout/Components.Styled";
+import {useForm} from 'react-hook-form';
+import Facebook from "../../components/Auth/Facebook";
+import Input from "../../components/Form/Input";
 
-function SignIn (props) {
+function SignIn(props) {
 
     const {} = props;
 
-    const [ value, setValue ] = useState([])
-
-    const responseFacebook = () => {
-    }
+    const {register, handleSubmit, errors} = useForm();
+    const onSubmit = data => console.log(data);
 
     return (
         <Container>
-            <LoginHeader to={"/"} className="Login-header">
-                <img src="https://unsplash.com/assets/core/logo-black-df2168ed0c378fa5506b1816e75eb379d06cfcd0af01e07a2eb813ae9b5d7405.svg" alt="unsplash" width={"60"}/>
-                <p className={"login-title"}>Login</p>
-                <p className={"login-text"}>Welcome Back.</p>
-            </LoginHeader>
-            <LoginBody className="login-body">
-                <FacebookLogin
-                    appId="1088597931155576"
-                    autoLoad={false}
-                    fields="name,email,picture"
-                    callback={responseFacebook}
-                    fontSize={"30"}
-                    icon={"fa-facebook"}
-                />
-                <p>OR</p>
-                <InputContainer>
-                    <Input>
-                        <p>Eamil</p>
-                        <input type="text"
+            <SContentContainer>
+
+                <Header to={"/"} className="Login-header">
+                    <Img onClick={() => navigate('/')}
+                         src="https://unsplash.com/assets/core/logo-black-df2168ed0c378fa5506b1816e75eb379d06cfcd0af01e07a2eb813ae9b5d7405.svg"
+                         alt="unsplash" width={"60"}/>
+                    <Text>
+                        <Title>Login</Title>
+                        <Description>Welcome Back.</Description>
+                    </Text>
+                </Header>
+
+                <Body>
+                    <Facebook/>
+                    <p>or</p>
+
+                    <Form onSubmit={handleSubmit(onSubmit)}>
+                        <Input label="Email"
                                name="email"
-                               className={"login-control"}
-                               onChange={(e) => {
-                                   setValue({
-                                       ...value,
-                                       email: e.target.value
-                                   })
-                               }}
+                               type="email"
+                               ref={register({required: true})}
+                               error={errors.email}
                         />
-                    </Input>
-                    <Input>
-                        <p>Password</p>
-                        <input type="password"
+
+                        <Input label="Password"
                                name="password"
-                               className={"login-control"}
-                               onChange={(e) => {
-                                   setValue({
-                                       ...value,
-                                       password: e.target.value
-                                   })
-                               }}
+                               type="password"
+                               ref={register({required: true})}
+                               error={errors.password}
                         />
-                        <a href="#" className={"forgot"}>Forgot your password?</a>
-                    </Input>
-                    <LoginButton>
-                        <button onClick={() => {
-                            console.log("value", value);
-                        }}>Login</button>
-                    </LoginButton>
-                </InputContainer>
-            </LoginBody>
-            <LoginFooter>Don't have an account?
-                <Link to={"/join"}>Join</Link>
-            </LoginFooter>
+
+                        <Forgot>Forgot your password?</Forgot>
+
+                        <Button>Login</Button>
+                    </Form>
+                </Body>
+
+                <Footer>Don't have an account?
+                    <span onClick={() => navigate('/sign/join')}>Join</span>
+                </Footer>
+            </SContentContainer>
         </Container>
     )
 }
 
 const Container = styled.div`
-  height: 100vh;
-  display:flex;
-  flex-wrap: wrap;
-  align-items:center;
-  justify-content:center;
-  flex-direction:column;
-  width: 100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width: 100%;   
+    height: 100vh;
 `
-const LoginHeader = styled.div`
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  .login-title {
-    font-weight:800;
-    font-size: 30px;
-    margin: 20px 0;
-  }
-  .login-text {
-    font-size: 16px;
-  } 
+const SContentContainer = styled(ContentContainer)`
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:space-between;
+    width: ${pxToRem(560)};
+    height: ${pxToRem(590)};
 `;
-const LoginBody = styled.div`
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  .kep-login-facebook {
-    background: #1778f2;
-    font-size: 16px;
-    text-transform: inherit;
-    border: 0;
+const Header = styled.div`
+    display:flex;
+    flex-direction:column;
+    align-items:center;
     width: 100%;
-    margin: 30px 0;
-    &.metro {
-      width: 100%;
-      border-radius: 5px;
-    }
-  }
 `;
-const InputContainer = styled.div`
-  display:flex;
-  flex-direction:column;
-  width: 100%;
-  border-radius: 5px;
-`
-const Input = styled.div`
-  position:relative;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  display:flex;
-  flex-direction:column;
-  p {
-    margin-bottom: 10px;
-    font-weight: 500;
-    font-size: 16px;
-  }
-  input {
-    width: 560px;
-    height: 36px;
-    border-radius: 5px;
-    border: 1px solid #666;
-    margin-bottom: 20px;
-    padding: 20px 10px;
+const Img = styled.img`
     
-  }
-  .forgot {
-    position: absolute;
-    top: 0;
-    right: 0;
-    text-align:right;
-    color: #666;
-    text-decoration: underline;
-  }
 `;
-const LoginButton = styled.div`
-  background-color: #111;
-  border-radius: 5px;
-  text-align:center;
-  button {
+const Text = styled.div`
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+`;
+const Title = styled.div`
+    font-weight:700;
+    font-size: ${pxToRem(30)};
+    margin: ${pxToRem(20)} 0;
+`;
+const Description = styled.div`
+    font-size: ${pxToRem(16)};
+    font-weight: 400;
+`;
+
+const Body = styled.div`
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    width: ${pxToRem(520)};
+    p {
+        color: #111;
+        font-size: 12px;
+        font-weight: 400;
+        text-transform: uppercase;
+    }
+`;
+const Form = styled.form`
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
     width: 100%;
-    height: 100%;
-    padding: 12px 0;
-    background: none;
+    margin-top: ${pxToRem(32)};
+    color: #111;
+`;
+const Forgot = styled.div`
+    position: absolute;
+    top: ${pxToRem(86)};
+    right: 0;
+    color: #666;
+    font-size: ${pxToRem(15)};
+    font-weight: 400;
+    line-height: 1.6;
+    text-decoration: underline;
+`;
+
+const Button = styled.button`
+    width: 100%;
+    height: ${pxToRem(50)};
+    padding: ${pxToRem(12)} 0;
+    background-color: #111;
+    border-radius: ${pxToRem(5)};
+    font-size: ${pxToRem(16)};
+    font-weight: 500;
+    text-align:center;
     border: none;
     color: #fff;
-    font-size: 16px;
-    font-weight: 500;
-  }
 `;
-const LoginFooter = styled.div`
-  text-align:center;
-  margin-top: 30px;
-  a {
-    color: #666;
-    text-decoration: underline;
-  }
+
+const Footer = styled.div`
+    display:flex;
+    align-items:center;
+    text-align:center;
+    margin-top:${pxToRem(32)};
+    span {
+        color: #666;
+        text-decoration: underline;
+        cursor: pointer;
+        margin-left: ${pxToRem(6)};
+    }
 `;
 export default SignIn;

@@ -10,10 +10,10 @@ function Member (props) {
 
     return (
         <Container>
-            <LoginButton onClick={() => navigate('/Sign/login')}>Login</LoginButton>
+            <LoginButton onClick={() => navigate('/sign/login')}>Login</LoginButton>
             <JoinButton size={'small'}
                         sort={'green'}
-                        onClick={() => navigate('/Sign/join')}
+                        onClick={() => navigate('/sign/join')}
             >Join free</JoinButton>
         </Container>
     )

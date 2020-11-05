@@ -3,8 +3,13 @@ import styled from 'styled-components';
 import FacebookLogin from "react-facebook-login";
 
 import {Link} from "react-router-dom";
+import {navigate} from "../../../lib/History";
+import {pxToRem} from "../../../common/Text/Text.Styled";
+import Facebook from "../../components/Auth/Facebook";
+import {useForm} from "react-hook-form";
+import Input from "../../components/Form/Input";
 
-function SignUp (props) {
+function SignUp(props) {
 
     const {} = props;
 
@@ -12,74 +17,77 @@ function SignUp (props) {
         console.log(response);
     }
 
+    const {register, handleSubmit, errors} = useForm();
+    const onSubmit = data => console.log(data);
+
     return (
         <Container>
-            <JoinLeft>
-                <ImgBox>
-                    <Logo>
-                        <img src="https://unsplash.com/assets/core/logo-white-8962708214629a3e8f9fbf5b87b70c3ace41c4175cbcc267f7fbb8449ac45bdd.svg" alt="unsplash"/>
-                    </Logo>
-                    <Text>
-                        <h3>Creation starts here</h3>
-                        <p>Access 2,096,199 free, high-resolution photos you can't find anywhere else</p>
-                    </Text>
-                    <Footer>
-                        <span>Uploaded about 7 years ago by Barcelona</span>
-                    </Footer>
-                </ImgBox>
-            </JoinLeft>
-            <JoinRight>
-                <JoinHeader className="Login-header">
-                    <h2>Join Unsplash</h2>
-                    <p>Already have an account? <Link to={"/login"}>Login</Link></p>
-                </JoinHeader>
-                <JoinBody className="login-body">
-                    <FacebookLogin
-                        appId="1088597931155576"
-                        autoLoad={false}
-                        fields="name,email,picture"
-                        callback={responseFacebook}
-                        fontSize={"30"}
-                        icon={"fa-facebook"}
-                    />
+            <Visual>
+                <Logo onClick={() => navigate('/')}>
+                    <img
+                        src="https://unsplash.com/assets/core/logo-white-8962708214629a3e8f9fbf5b87b70c3ace41c4175cbcc267f7fbb8449ac45bdd.svg"
+                        alt="unsplash"/>
+                </Logo>
+
+                <Text>
+                    <Title>Creation starts here</Title>
+                    <Description>Access 2,096,199 free, high-resolution photos you can't find anywhere
+                        else</Description>
+                </Text>
+
+                <Thumbnail>Uploaded about 7 years ago by Barcelona</Thumbnail>
+            </Visual>
+
+
+            <SContentContainer>
+                <Header>
+                    <JoinTitle>Join Unsplash</JoinTitle>
+                    <JoinDescription>Already have an account? <span onClick={() => navigate('/sign/login')}>Login</span></JoinDescription>
+                </Header>
+
+                <Body className="login-body">
+                    <Facebook/>
                     <p>OR</p>
-                </JoinBody>
-                <Form action="join-form">
-                    <User>
-                        <Input className={"user"}>
-                            <label htmlFor="">First name</label>
-                            <input placeholder={"First Name"} />
-                        </Input>
-                        <Input className={"user"}>
-                            <label htmlFor="">Last name</label>
-                            <input placeholder={"Last Name"} />
-                        </Input>
-                    </User>
-                    <Input>
-                        <label htmlFor="">Email address</label>
-                        <input placeholder={""} />
-                    </Input>
-                    <Input>
-                        <label htmlFor="">Username
-                            <span>(only letters, numbers, and underscores)</span>
-                        </label>
-                        <input placeholder={""} />
-                    </Input>
-                    <Input>
-                        <label htmlFor="">Password
-                            <span>(min. 6 char)</span>
-                        </label>
-                        <input placeholder={""} />
-                    </Input>
-                    <Button>
-                        Join
-                    </Button>
-                </Form>
-                <JoinFooter>By joining, you agree to the
-                    <Link>Terms</Link> and
-                    <Link>Privacy Policy</Link>.
-                </JoinFooter>
-            </JoinRight>
+
+                    <Form onSubmit={handleSubmit(onSubmit)}>
+                        <Input label="First name"
+                               type="text"
+                               name="firstname"
+                               placeholder="First Name"
+                        />
+
+                        <Input label="Last name"
+                               type="text"
+                               name="lastname"
+                               placeholder="Last Name"
+                        />
+
+                        <Input label="Email address"
+                               type="email"
+                               name="email"
+                               placeholder=""
+                        />
+
+                        <Input label="Username"
+                               type="username"
+                               name="username"
+                               placeholder=""
+                        />
+
+                        <Input label="Password"
+                            type="password"
+                               name="password"
+                               placeholder=""
+                        />
+                        <Button>Join</Button>
+                    </Form>
+                </Body>
+
+                <Footer>By joining, you agree to the
+                    <span onClcik={() => navigate('/terms')}>Terms</span> and
+                    <span onClcik={() => navigate('/policy')}>Privacy Policy</span>.
+                </Footer>
+            </SContentContainer>
         </Container>
     )
 }
@@ -89,128 +97,136 @@ const Container = styled.div`
   flex-direction:row;
   height: 100vh;
 `
-const JoinLeft = styled.div`
-  position:relative;
-  top: 0;
-  right: 0;
-  left: 0;
-  bottom: 0;
-  flex: 2;
-  background: url("https://images.unsplash.com/photo-1598432521392-0ce5ff611c85?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=562&q=80") 50% 50% / cover no-repeat;
-  &:before {
-    content: '';
-    position: absolute;
+const Visual = styled.div`
+    position:relative;
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
-    background-color: rgba(0,0,0,.15);
-    z-index: 10;
-  }
-`;
-const ImgBox = styled.div`
-  height: 100vh;
-  position:relative;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  display:flex;
-  flex-direction:column;
-  align-items:flex-start;
-  justify-content:center;
-  padding: 80px;
-  color: #fff;
+    display:flex;
+    flex-direction:column;
+    align-items:flex-start;
+    justify-content: space-between;
+    flex: 2;
+    color: #fff;
+    padding: ${pxToRem(50)};
+    background: url("https://source.unsplash.com/category/nature") 50% 70% / cover no-repeat;
+    &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,.3);
+        z-index: 1;
+    }
 `;
 const Logo = styled.div`
-  z-index: 100;
+    z-index: 2;
 `;
 const Text = styled.div`
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  flex: 1;
-  z-index: 101;
-  h3 {
-    font-size: 50px;
-    font-weight:900;
-  }
-  p {
-    font-size: 24px;
-    font-weight: 600;
-  }
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    flex: 1;
+    z-index: 2;
 `;
-const JoinRight = styled.div`
-  flex: 3;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
-  
+const Title = styled.div`
+    font-size: ${pxToRem(48)};
+    font-weight:700;
+    margin-bottom: ${pxToRem(16)};
 `;
-const Button = styled.div`
-
+const Description = styled.div`
+    font-size: ${pxToRem(24)};
+    font-weight: 400;
+    line-height: 1.35;
 `;
-const JoinFooter = styled.div`
-    
-`;
-const Footer = styled.div`
-  font-size: 16px;
-  font-weight: 800;
+const Thumbnail = styled.div`
+    font-size: ${pxToRem(15)};
+    font-weight: 400;
+    line-height: 1.6;
+    margin: ${pxToRem(16)} 0;
 `;
 
-const JoinHeader = styled.div`
+const SContentContainer = styled.div`
+    flex: 3;
     display:flex;
     flex-direction:column;
     align-items:center;
-    margin-bottom: 50px;
-    h2 {
-      color: #111;
-      font-size: 50px;
-      font-weight: 900;
+    justify-content: flex-start;
+    padding: ${pxToRem(80)} 8% ${pxToRem(20)};
+    overflow-x: hidden;
+    overflow-y: scroll;
+`;
+const Header = styled.div`
+    display:flex;
+    align-items:center;
+    flex-direction:column;
+`;
+const JoinTitle = styled.div`
+    color: #111;
+    font-size: ${pxToRem(46)};
+    font-weight: 700;
+`;
+const JoinDescription = styled.div`
+    font-size: ${pxToRem(15)};
+    font-weight: 400;
+    line-height: 1.6;
+    margin: ${pxToRem(16)} 0;
+    span {
+        color: #767676;
+        text-decoration: underline;
     }
 `;
-const JoinBody = styled.div`
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  .kep-login-facebook {
-    background: #1778f2;
-    font-size: 16px;
-    text-transform: inherit;
-    border: 0;
+const Body = styled.div`
+    display:flex;
+    flex-direction:column;
+    align-items:center;
     width: 100%;
-    margin: 30px 0;
-    &.metro {
-      width: 100%;
-      border-radius: 5px;
+    p {
+        color: #111;
+        font-size: 12px;
+        font-weight: 400;
+        text-transform: uppercase;
     }
-  }
 `;
-const Form = styled.div`
-  width: 800px;
+const Form = styled.form`
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    justify-content: space-between;
+    width: 100%;
 `;
-const User = styled.div`
-  display:flex;
-  flex-direction:row;
-  justify-content: space-between;
-  .user {
-  width: 49%;
-  }
+const Button = styled.button`
+    display: flex;
+    align-items:center;
+    justify-content:center;
+    width: 100%;
+    height: ${pxToRem(42)};
+    background: #111;
+    border-radius: ${pxToRem(3)};
+    color: #fff;
+    font-size: ${pxToRem(15)};
+    font-weight: 500;
+    line-height: 1.6;
+    border: none;
+    box-shadow: none;
+    &:focus {
+        outline: none;
+    }
 `;
-const Input = styled.div`
-  display:flex;
-  flex-direction:column;
-  width: 100%;
-  margin: 10px 0;
-
-  label {
-    margin-bottom: 10px;
-  }
-  input {
-    padding: 10px;
-    -webkit-border-radius: 3px;-moz-border-radius: 3px;border-radius: 3px;
-    border: 1px solid #111;
-  }
+const Footer = styled.div`
+    margin: ${pxToRem(22)} 0;
+    color: #767676;
+    font-size: ${pxToRem(13)};
+    line-height: 1.8;
+    span {
+        cursor: pointer;
+        margin: 0 ${pxToRem(4)};
+        text-decoration: underline;
+    }
 `;
-
 export default SignUp;
