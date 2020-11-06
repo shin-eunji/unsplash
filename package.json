@@ -1,69 +1,29 @@
 {
-  "name": "unsplash",
+  "name": "Unsplash",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/shin-eunji/unsplash.git"
-  },
+  "repository": "https://github.com/shin-eunji/unsplash.git",
   "author": "shineunji <dmswlckato@gmail.com>",
+  "license": "MIT",
   "dependencies": {
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
-    "axios": "^0.20.0",
+    "axios": "^0.21.0",
     "classnames": "^2.2.6",
     "dotenv": "^8.2.0",
-    "firebase": "^7.23.0",
-    "history": "4.10.1",
+    "firebase": "^8.0.1",
+    "history": "^5.0.0",
     "lodash": "^4.17.20",
-    "node-sass": "^4.14.1",
-    "nodemon": "^2.0.4",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-hook-form": "^6.9.2",
+    "node-sass": "^5.0.0",
+    "nodemon": "^2.0.6",
+    "react-dom": "^17.0.1",
+    "react-hook-form": "^6.10.1",
     "react-icons": "^3.11.0",
-    "react-redux": "^7.2.1",
+    "react-redux": "^7.2.2",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "3.4.3",
-    "react-tabs": "^3.1.1",
     "redux": "^4.0.5",
     "redux-devtools-extension": "^2.13.8",
     "redux-saga": "^1.1.3",
     "reduxsauce": "^1.2.0",
-    "styled-components": "^5.2.0",
+    "styled-components": "^5.2.1",
     "styled-media-query": "^2.1.2"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "yarn build",
-    "deploy": "gh-pages -d build"
-  },
-  "eslintConfig": {
-    "extends": "react-app"
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
-  "license": "MIT",
-  "description": "",
-  "bugs": {
-    "url": "https://github.com/shin-eunji/unsplash/issues"
-  },
-  "homepage": "https://github.com/shin-eunji/unsplash/",
-  "devDependencies": {
-    "gh-pages": "^3.1.0"
   }
 }
