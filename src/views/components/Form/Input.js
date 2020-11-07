@@ -56,6 +56,9 @@ const Container = styled.div`
       color: #767676;
       margin-left: ${pxToRem(4)};
     }
+    &input:-internal-autofill-selected {
+        background: #fff;
+    }
 `
 const Label = styled.label`
     margin-bottom: ${pxToRem(6)};
@@ -73,10 +76,12 @@ const InputText = styled.input`
     border: 1px solid #767676;
     margin-bottom: ${pxToRem(20)};
     padding: ${pxToRem(20)} ${pxToRem(10)};
+    background: #fff;
     &:focus {
         border: 1px solid #e25c3d;
         outline: none;
         box-shadow: none;
+        background: #fff;
         + label {
             color: #e25c3d;
       }

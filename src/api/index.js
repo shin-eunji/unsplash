@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 
 const FetchConsts = {
     GET: 'get',
@@ -41,7 +41,12 @@ const Fetch = {
 }
 
 const API = {
-    searchPhotos: (data) => Fetch.get(`https://api.unsplash.com/search/photos`, data)
+    listPhotos: (data) => Fetch.get(`https://api.unsplash.com/photos`, data),
+    searchPhotos: (data) => Fetch.get(`https://api.unsplash.com/search/photos`, data),
+    search: (data) => Fetch.get(`https://api.unsplash.com/search/photos`, data),
+    topicsPhotos: (data) => Fetch.get(`https://api.unsplash.com/topics`, data),
+
+
 }
 
 export default API;

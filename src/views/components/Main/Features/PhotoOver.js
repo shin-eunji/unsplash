@@ -4,16 +4,19 @@ import styled from 'styled-components';
 import {AiOutlineArrowDown, AiOutlinePlus, GoHeart} from "react-icons/all";
 import {pxToRem} from "../../../../common/Text/Text.Styled";
 import {photoActions} from "../../../../redux/actionCreators";
+import {navigate} from "../../../../lib/History";
 
 function PhotoOver (props) {
 
     const {
+        id,
+        user,
+        links,
     } = props;
 
-    const closePopup = () => photoActions.updateState({over: false});
 
     return (
-        <Container onClick={closePopup}>
+        <Container id={id}>
             <ButtonGroup>
                 <Button>
                     <GoHeart/>
@@ -24,13 +27,16 @@ function PhotoOver (props) {
             </ButtonGroup>
             <ProfileGroup>
                 <Profile>
-                    <ProfileImage/>
+                    <ProfileImage>
+                        <img src={user.profile_image.small} alt="profile"/>
+
+                    </ProfileImage>
                     <UserName>
-                        Brain
+                        {user.name}
                     </UserName>
                 </Profile>
-                <DownloadButton>
-                    <AiOutlineArrowDown/>
+                <DownloadButton href={links.html}>
+                    <AiOutlineArrowDown />
                 </DownloadButton>
             </ProfileGroup>
         </Container>
@@ -87,10 +93,10 @@ const Profile = styled.div`
 const ProfileImage = styled.div`
     width: ${pxToRem(32)};
     height: ${pxToRem(32)};
-    border: 1px solid #eee;
     border-radius: ${pxToRem(30)};
     background: #fff;
     margin-right: ${pxToRem(10)};
+    overflow: hidden;
 `;
 const UserName = styled.div`
     flex: 1;
@@ -99,7 +105,7 @@ const UserName = styled.div`
     font-size: ${pxToRem(15)};
     font-weight: 400;
 `;
-const DownloadButton = styled.button`
+const DownloadButton = styled.a`
     width: ${pxToRem(40)};
     height: ${pxToRem(32)};
     background: rgba(255,255,255,.9);

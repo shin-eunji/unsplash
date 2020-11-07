@@ -1,7 +1,11 @@
 import {createActions, createReducer} from 'reduxsauce';
 
 const initialState = {
-
+    isLoading: true,
+    isError: false,
+    memoList: null,
+    user: null,
+    onLoad: false,
 }
 
 export const Action = createActions({

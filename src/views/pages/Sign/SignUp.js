@@ -2,12 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 import FacebookLogin from "react-facebook-login";
 
-import {Link} from "react-router-dom";
 import {navigate} from "../../../lib/History";
 import {pxToRem} from "../../../common/Text/Text.Styled";
 import Facebook from "../../components/Auth/Facebook";
 import {useForm} from "react-hook-form";
 import Input from "../../components/Form/Input";
+import {authActions} from "../../../redux/actionCreators";
+import Validation, {ValidationTypes} from "../../../lib/Validate";
 
 function SignUp(props) {
 
@@ -18,7 +19,11 @@ function SignUp(props) {
     }
 
     const {register, handleSubmit, errors} = useForm();
-    const onSubmit = data => console.log(data);
+
+    const onSubmit = data => {
+        authActions.signUp(data);
+        console.log("errors", errors);
+    }
 
     return (
         <Container>
@@ -54,30 +59,62 @@ function SignUp(props) {
                                type="text"
                                name="firstname"
                                placeholder="First Name"
+                               register={register({
+                                   required: true
+                               })}
+                               error={errors.name}
                         />
 
                         <Input label="Last name"
                                type="text"
                                name="lastname"
                                placeholder="Last Name"
+                               register={register({
+                                   required: true
+                               })}
+                               error={errors.name}
                         />
 
                         <Input label="Email address"
                                type="email"
                                name="email"
                                placeholder=""
+                               register={register({
+                                   required: true,
+                                   validate: {
+                                       [ValidationTypes.IS_EMAIL]: value => Validation.isEmail(value)
+                                   },
+                               })}
+                               error={errors.email}
                         />
 
                         <Input label="Username"
                                type="username"
                                name="username"
                                placeholder=""
+                               register={register({
+                                   required: true,
+                                   maxLength: 15,
+                                   validate: {
+                                       [ValidationTypes.IS_VALID_NICKNAME]: value => Validation.isValidNickname(value),
+                                   },
+                               })}
+                               error={errors.nickname}
                         />
 
                         <Input label="Password"
-                            type="password"
+                               type="password"
                                name="password"
                                placeholder=""
+                               register={register({
+                                   required: true,
+                                   minLength: 8,
+                                   maxLength: 16,
+                                   validate: {
+                                       [ValidationTypes.IS_VALID_PASSWORD]: value => Validation.isValidPassword(value),
+                                   },
+                               })}
+                               error={errors.password}
                         />
                         <Button>Join</Button>
                     </Form>
@@ -214,6 +251,7 @@ const Button = styled.button`
     line-height: 1.6;
     border: none;
     box-shadow: none;
+    cursor: pointer;
     &:focus {
         outline: none;
     }

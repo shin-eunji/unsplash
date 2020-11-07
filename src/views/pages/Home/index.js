@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
 
 import Header from "../../components/Main/Header";
@@ -15,7 +15,7 @@ function Home (props) {
         <Container>
             <Header />
             <Visual />
-            <Features/>
+            <Features />
             <Footer/>
         </Container>
     )

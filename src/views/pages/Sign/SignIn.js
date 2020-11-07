@@ -6,6 +6,7 @@ import {ContentContainer} from "../../../common/Layout/Components.Styled";
 import {useForm} from 'react-hook-form';
 import Facebook from "../../components/Auth/Facebook";
 import Input from "../../components/Form/Input";
+import Validation, {ValidationTypes} from "../../../lib/Validate";
 
 function SignIn(props) {
 
@@ -36,14 +37,28 @@ function SignIn(props) {
                         <Input label="Email"
                                name="email"
                                type="email"
-                               ref={register({required: true})}
+                               register={register({
+                                   required: true,
+                                   minLength: 8,
+                                   maxLength: 16,
+                                   validate: {
+                                       [ValidationTypes.IS_EMAIL]: value => Validation.isEmail(value),
+                                   },
+                               })}
                                error={errors.email}
                         />
 
                         <Input label="Password"
                                name="password"
                                type="password"
-                               ref={register({required: true})}
+                               register={register({
+                                   required: true,
+                                   minLength: 8,
+                                   maxLength: 16,
+                                   validate: {
+                                       [ValidationTypes.IS_VALID_PASSWORD]: value => Validation.isValidPassword(value),
+                                   },
+                               })}
                                error={errors.password}
                         />
 

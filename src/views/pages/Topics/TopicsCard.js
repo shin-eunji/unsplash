@@ -6,6 +6,7 @@ import {MdPhoto} from "react-icons/all";
 function TopicsCard (props) {
 
     const {
+        links,
         title,
         description,
         total_photos,
@@ -13,11 +14,10 @@ function TopicsCard (props) {
         status,
     } = props;
 
-    const counter = num => (num/1000).toFixed(0) + 'K';
-
+    const counter = num => (num/1000).toFixed(0) + 'K'
 
     return (
-        <Container>
+        <Container href={links.html} target={'_blank'}>
             <Preview>
                 <img src={cover_photo.urls.small} height={'180'}/>
             </Preview>
@@ -46,12 +46,16 @@ function TopicsCard (props) {
     )
 }
 
-const Container = styled.div`
+const Container = styled.a`
     position:relative;
     flex: 1 0 30%;
     border-radius: ${pxToRem(8)};
     box-shadow: 0px 0px 10px 5px rgba(0,0,0,.05);
     margin: ${pxToRem(12)};
+    cursor: pointer;
+    &:hover {
+    box-shadow: 0px 0px 8px 10px rgba(0,0,0,.05);
+    }
 `;
 const Preview = styled.div`
     position:relative;

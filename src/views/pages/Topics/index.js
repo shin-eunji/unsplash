@@ -10,22 +10,20 @@ import TopicsCard from "./TopicsCard";
 import axios from "axios";
 import Header from "../../components/Main/Header";
 import Footer from "../../components/Main/Footer";
+import {photoActions} from "../../../redux/actionCreators";
+import {useSelector} from "react-redux";
 // import {useSelector} from "react-redux";
 
 function Topics (props) {
 
     const {} = props;
 
-    const [topics, setTopics] = useState([])
-
-    useEffect(() => {
-        axios.get('https://api.unsplash.com/topics/?client_id=t_jbP7JejOj1keyZ7UiEl1BZcoPHG3vxmy3rPUGhVRc')
-            .then ((res) => {
-                console.log("res", res);
-                const data = res.data;
-                setTopics(data)
-            })
+    useEffect((data) => {
+        photoActions.topicsPhoto(data)
+        console.log("data", data);
     }, [])
+
+    const {topics} = useSelector(state => state.photo)
 
     return (
         <Container>

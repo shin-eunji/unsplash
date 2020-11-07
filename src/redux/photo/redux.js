@@ -1,19 +1,21 @@
 import {createActions, createReducer} from 'reduxsauce';
 
 const initialState = {
-    post: [],
-    photo: {},
+    list: [],
+    photo: [],
+    search: [],
+    topics: [],
     photoDetail: false,
-    toggleOver: false,
     over: false,
     quickMenu: false,
-    mouseOver: false
 }
 
 export const Action = createActions({
     updateState: ['state'],
+    listPhoto: ['data'],
+    topicsPhoto: ['data'],
     searchPhoto: ['keyword'],
-    listPhoto: ['data']
+    search: ['data'],
 }, {prefix: 'PHOTO/'})
 
 export const reducer = createReducer(initialState, {

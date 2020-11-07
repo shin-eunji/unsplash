@@ -1,43 +1,45 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import axios from 'axios'
+
 
 import {ContentContainer} from "../../../../common/Layout/Components.Styled";
 import {pxToRem} from "../../../../common/Text/Text.Styled";
-
-import PhotosList from "./PhotosList";
-import {useSelector} from "react-redux";
 import {photoActions} from "../../../../redux/actionCreators";
+import {useSelector} from "react-redux";
+import PhotosList from "./PhotosList";
 
-function Features () {
+function Features() {
 
-    const { post } = useSelector(state => state.photo)
-
-    useEffect(() => {
-        axios.get("https://api.unsplash.com/photos/?client_id=t_jbP7JejOj1keyZ7UiEl1BZcoPHG3vxmy3rPUGhVRc")
-            .then(res => {
-                const data = res.data;
-                console.log("data", data);
-                photoActions.listPhoto(data)
-            })
+    useEffect((data) => {
+        photoActions.listPhoto(data)
+        console.log("data", data);
     }, [])
+
+    const {list} = useSelector(state => state.photo)
+
 
     return (
         <Container>
             {
-                post.map((item, index) => <PhotosList key={index} {...item}/>)
+                list.map((data, index) => <PhotosList key={index} {...data}/>)
             }
         </Container>
     )
+
 }
 
 const Container = styled(ContentContainer)`
     position: relative;
-    line-height: 0;
+    top: ${pxToRem(60)};
+    ine-height: 0;
+    margin-top: 10px;
+    -webkit-column-count: 4;
+    -webkit-column-gap: 0px;
+    -moz-column-count: 4;
+    -moz-column-gap: 0px;
     column-count: 3;
-    column-gap: ${pxToRem(20)};
-    row-gap: ${pxToRem(20)};
-    padding: 0;
+    column-gap: 10px;
 `
+
 
 export default Features;

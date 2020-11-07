@@ -1,17 +1,28 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
+import {photoActions} from "../../../redux/actionCreators";
+import {useSelector} from "react-redux";
 
 function Details (props) {
 
     const {
-        id,
-        urls
+
     } = props;
-    
+
+    useEffect((data) => {
+        photoActions.searchPhoto(data)
+        console.log("data", data);
+    }, [])
+
+    const {photo} = useSelector(state => state.photo)
+
+
 
     return (
         <Container>
-            <img key={id} src={urls.raw} />
+            {
+                photo.map((data, index) => <Details key={index} {...data} />)
+            }
         </Container>
     )
 }

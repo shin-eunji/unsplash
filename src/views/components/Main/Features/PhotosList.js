@@ -11,28 +11,34 @@ function PhotosList(props) {
 
     const {
         id,
+        user,
         urls,
+        links,
     } = props;
 
-    const [ over, handleMouseover ] = useState(false)
-
     const { photoDetail } = useSelector(state => state.photo);
+
+    // const {over} = useSelector(state => state.photo);
+    // const mouseEnter = () => over(true)
+    // const mouseLeave = () => over(false)
+
     const openPopup = () => photoActions.updateState({photoDetail: true});
 
     return (
         <Container key={id}
                    onClick={openPopup}
-                   onMouseEnter={() => handleMouseover(true)}
-                   onMouseLeave={() => handleMouseover(false)}
+                   // onMouseEnter={mouseEnter}
+                   // onMouseLeave={mouseLeave}
         >
-            {
-                photoDetail &&
-                <PhotoPopup photoDetail={openPopup} urls={urls}/>
-            }
-            {
-                over && <PhotoOver/>
-            }
+        {/*{*/}
+        {/*    over && <PhotoOver user={user} links={links}/>*/}
+        {/*}*/}
+
             <img src={urls.small} />
+            {/*{*/}
+            {/*    photoDetail &&*/}
+            {/*    <PhotoPopup photoDetail={openPopup} user={user} urls={urls}/>*/}
+            {/*}*/}
         </Container>
     )
 }

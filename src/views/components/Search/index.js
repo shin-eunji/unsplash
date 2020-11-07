@@ -1,8 +1,7 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {AiOutlineSearch} from 'react-icons/ai';
 import {pxToRem} from "../../../common/Text/Text.Styled";
-import axios from 'axios'
 import Details from "../../pages/Details/Details";
 import {navigate} from "../../../lib/History";
 import {photoActions} from "../../../redux/actionCreators";
@@ -12,19 +11,20 @@ function Search(props) {
 
     const {} = props;
 
-    const [photo, setPhoto] = useState({})
+    useEffect((data) => {
+        photoActions.searchPhoto(data)
+        console.log("data", data);
+    }, [])
 
-    const [result, setResult] = useState([])
 
-    const {searchPhoto} = useSelector(state => state.photo);
+    const {photo} = useSelector(state => state.photo)
 
     const handleChange = (e) => {
-        setPhoto(e.target.value);
+        photoActions.searchPhoto(e.target.value)
     }
 
-    const handleSubmit = () => {
-        photoActions.searchPhoto(photo);
-        navigate('detail')
+    const handleSubmit = ({data}) => {
+        photoActions.search(data.query)
     }
 
     const handleKeyPress = (e) => {
@@ -41,9 +41,9 @@ function Search(props) {
                    onChange={handleChange}
                    onKeyPress={handleKeyPress}
             />
-            {
-                searchPhoto?.results.map((item, index) => <Details {...item} />)
-            }
+            {/*{*/}
+            {/*    photo.map((data, index) => <Details key={index} {...data} />)*/}
+            {/*}*/}
         </Container>
     )
 }
