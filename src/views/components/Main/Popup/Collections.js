@@ -1,30 +1,17 @@
 import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
-import axios from "axios";
 import {pxToRem} from "../../../../common/Text/Text.Styled";
+import Features from "../Features";
 
 function Collections (props) {
 
     const {} = props;
 
-    const [post, setPost] = useState([])
-
-    useEffect(() => {
-        axios.get("https://api.unsplash.com/photos/?client_id=t_jbP7JejOj1keyZ7UiEl1BZcoPHG3vxmy3rPUGhVRc")
-            .then(res => {
-                const data = res.data;
-                console.log("data", data);
-                setPost(data);
-            })
-    }, [])
-
     return (
         <Container>
             <Title>Related photos</Title>
             <ContentContainer>
-                {
-                    post.map(item => <img src={item.urls.small} alt='photo'/>)
-                }
+                <Features/>
             </ContentContainer>
         </Container>
     )

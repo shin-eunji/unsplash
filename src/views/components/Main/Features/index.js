@@ -29,16 +29,14 @@ function Features() {
 }
 
 const Container = styled(ContentContainer)`
-    position: relative;
-    top: ${pxToRem(60)};
-    ine-height: 0;
+    line-height: 0;
     margin-top: 10px;
     -webkit-column-count: 4;
     -webkit-column-gap: 0px;
     -moz-column-count: 4;
     -moz-column-gap: 0px;
     column-count: 3;
-    column-gap: 10px;
+    column-gap: ${pxToRem(20)};
 `
 
 

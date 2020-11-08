@@ -1,6 +1,8 @@
 import {createActions, createReducer} from 'reduxsauce';
 
 const initialState = {
+    show: false,
+    photoDetails: false
 }
 
 export const Action = createActions({

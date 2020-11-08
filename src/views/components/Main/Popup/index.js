@@ -1,30 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
-import {photoActions} from "../../../../redux/actionCreators";
+import {appActions} from "../../../../redux/actionCreators";
 import {ContentContainer} from "../../../../common/Layout/Components.Styled";
 import {pxToRem} from "../../../../common/Text/Text.Styled";
 import {AiOutlineClose} from "react-icons/all";
 import Photo from "./Photo";
 import Collections from "./Collections";
 import Profile from "./Profile";
+import {useSelector} from "react-redux";
 
-function PhotoPopup (props) {
+function Popup (props) {
 
     const {
-        photoDetail,
+        id,
+        user,
         urls,
+        links,
     } = props;
 
-    const closePopup = () => photoActions.updateState({photoDetail: false});
+    const {photoDetails} = useSelector(state => state.app);
+    const handlePopup = () => appActions.updateState({photoDetails: false})
 
     return (
-        <Container onClick={() => photoActions.updateState({photoDetail: !photoDetail})}>
+        <Container id={id} onClick={handlePopup} photoDetails={handlePopup}>
             <SContentContainer>
-                <Profile/>
-                <Photo urls={urls} />
+                <Profile><img src={user.profile_image.small} alt="profile"/></Profile>
+                <Photo urls={urls.small} />
                 <Collections/>
             </SContentContainer>
-            <ButtonClose onClick={closePopup}>
+            <ButtonClose onClick={handlePopup}>
                 <AiOutlineClose/>
             </ButtonClose>
         </Container>
@@ -74,4 +78,4 @@ const ButtonClose = styled.button`
     background: none;
     cursor: pointer;
 `;
-export default PhotoPopup;
+export default Popup;

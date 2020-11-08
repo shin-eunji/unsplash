@@ -6,7 +6,6 @@ const initialState = {
     search: [],
     topics: [],
     photoDetail: false,
-    over: false,
     quickMenu: false,
 }
 

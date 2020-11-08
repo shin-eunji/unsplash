@@ -3,8 +3,6 @@ import styled from 'styled-components';
 
 import {AiOutlineArrowDown, AiOutlinePlus, GoHeart} from "react-icons/all";
 import {pxToRem} from "../../../../common/Text/Text.Styled";
-import {photoActions} from "../../../../redux/actionCreators";
-import {navigate} from "../../../../lib/History";
 
 function PhotoOver (props) {
 
@@ -17,28 +15,30 @@ function PhotoOver (props) {
 
     return (
         <Container id={id}>
-            <ButtonGroup>
-                <Button>
-                    <GoHeart/>
-                </Button>
-                <Button>
-                    <AiOutlinePlus/>
-                </Button>
-            </ButtonGroup>
-            <ProfileGroup>
-                <Profile>
-                    <ProfileImage>
-                        <img src={user.profile_image.small} alt="profile"/>
+            <Content>
+                <ButtonGroup>
+                    <Button>
+                        <GoHeart/>
+                    </Button>
+                    <Button>
+                        <AiOutlinePlus/>
+                    </Button>
+                </ButtonGroup>
+                <ProfileGroup>
+                    <Profile>
+                        <ProfileImage>
+                            <img src={user.profile_image.small} alt="profile"/>
 
-                    </ProfileImage>
-                    <UserName>
-                        {user.name}
-                    </UserName>
-                </Profile>
-                <DownloadButton href={links.html}>
-                    <AiOutlineArrowDown />
-                </DownloadButton>
-            </ProfileGroup>
+                        </ProfileImage>
+                        <UserName>
+                            {user.name}
+                        </UserName>
+                    </Profile>
+                    <DownloadButton href={links.html}>
+                        <AiOutlineArrowDown />
+                    </DownloadButton>
+                </ProfileGroup>
+            </Content>
         </Container>
     )
 }
@@ -51,12 +51,33 @@ const Container = styled.div`
     bottom: 0;
     width: 100%;
     height: 100%;
+    &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(0,0,0,.15), rgba(0,0,0,0), rgba(0,0,0,.2));
+        z-index: 1;
+    }
+`
+const Content = styled.div`
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
     display:flex;
     flex-direction:column;
     justify-content: space-between;
+    width: 100%;
+    height: 100%;
     padding: ${pxToRem(20)};
     z-index: 10;
-`
+`;
 const ButtonGroup = styled.div`
     display:flex;
     align-items:center;
@@ -106,6 +127,9 @@ const UserName = styled.div`
     font-weight: 400;
 `;
 const DownloadButton = styled.a`
+    display:flex;
+    align-items:center;
+    justify-content:center;
     width: ${pxToRem(40)};
     height: ${pxToRem(32)};
     background: rgba(255,255,255,.9);
