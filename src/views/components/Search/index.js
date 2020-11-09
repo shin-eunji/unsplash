@@ -2,29 +2,45 @@ import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {AiOutlineSearch} from 'react-icons/ai';
 import {pxToRem} from "../../../common/Text/Text.Styled";
+import axios from 'axios'
 import Details from "../../pages/Details/Details";
 import {navigate} from "../../../lib/History";
 import {photoActions} from "../../../redux/actionCreators";
 import {useSelector} from "react-redux";
+import API from "../../../api";
 
 function Search(props) {
 
     const {} = props;
+    //
+    // const {search} = useSelector(state => state.photo)
+    //
+    // useEffect((data) => {
+    //     photoActions.searchPhoto(data)
+    // }, [])
+    //
+    //
+    // const {photo} = useSelector(state => state.photo)
 
-    useEffect((data) => {
-        photoActions.searchPhoto(data)
-        console.log("data", data);
-    }, [])
-
-
-    const {photo} = useSelector(state => state.photo)
+    const [photo, setPhoto] = useState([])
+    const [client, setClient] = useState('t_jbP7JejOj1keyZ7UiEl1BZcoPHG3vxmy3rPUGhVRc')
+    const [result, setResult] = useState([])
 
     const handleChange = (e) => {
-        photoActions.searchPhoto(e.target.value)
+        setPhoto(e.target.value)
+        // photoActions.search(e.target.value)
     }
+    useEffect(() => {
+        photoActions.search()
+    }, [])
 
-    const handleSubmit = ({data}) => {
-        photoActions.search(data.query)
+    const handleSubmit = () => {
+        const url = `https://api.unsplash.com/search/photos?page=3&query=${photo}&client_id=${client}`;
+
+
+        axios.get(url).then((res) => {setResult(res.data.results)})
+        console.log("photo", photo);
+        // photoActions.search(data.query)
     }
 
     const handleKeyPress = (e) => {
@@ -36,14 +52,15 @@ function Search(props) {
     return (
         <Container>
             <Icon onClick={handleSubmit} />
-            <Input name="search"
+            <Input name="photo"
+                   type="text"
                    placeholder="Search free high-resolution photos"
                    onChange={handleChange}
                    onKeyPress={handleKeyPress}
             />
-            {/*{*/}
-            {/*    photo.map((data, index) => <Details key={index} {...data} />)*/}
-            {/*}*/}
+            {
+                result.map((photo) => <Details {...photo}/>)
+            }
         </Container>
     )
 }

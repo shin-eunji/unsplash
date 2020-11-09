@@ -7,28 +7,28 @@ import {AiOutlineClose} from "react-icons/all";
 import Photo from "./Photo";
 import Collections from "./Collections";
 import Profile from "./Profile";
-import {useSelector} from "react-redux";
 
 function Popup (props) {
 
     const {
-        id,
         user,
         urls,
-        links,
     } = props;
 
-    const {photoDetails} = useSelector(state => state.app);
-    const handlePopup = () => appActions.updateState({photoDetails: false})
+    const closePopup = () => {
+        appActions.updateState({ popup: false })
+        console.log("Popup Close");
+    }
 
     return (
-        <Container id={id} onClick={handlePopup} photoDetails={handlePopup}>
+        <Container onClick={closePopup}>
+            Lorem ipsum dolor sit amet, consectetur adipisicing.
             <SContentContainer>
                 <Profile><img src={user.profile_image.small} alt="profile"/></Profile>
                 <Photo urls={urls.small} />
                 <Collections/>
             </SContentContainer>
-            <ButtonClose onClick={handlePopup}>
+            <ButtonClose onClick={closePopup}>
                 <AiOutlineClose/>
             </ButtonClose>
         </Container>
@@ -45,7 +45,7 @@ const Container = styled.div`
     height: 100%;
     background: rgba(0,0,0,.05);
     padding: ${pxToRem(32)}${pxToRem(120)} ${pxToRem(100)};
-    z-index: 100;
+    z-index: 1000;
     cursor: zoom-out;
 `
 const SContentContainer = styled(ContentContainer)`

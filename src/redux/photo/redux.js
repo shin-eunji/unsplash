@@ -5,8 +5,6 @@ const initialState = {
     photo: [],
     search: [],
     topics: [],
-    photoDetail: false,
-    quickMenu: false,
 }
 
 export const Action = createActions({

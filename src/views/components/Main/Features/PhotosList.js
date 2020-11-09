@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
+import PhotoPopup from "../Popup";
 
 import {useSelector} from "react-redux";
 import {appActions, photoActions} from "../../../../redux/actionCreators";
@@ -11,45 +12,41 @@ function PhotosList(props) {
 
     const {
         id,
-        user,
         urls,
+        user,
         links,
     } = props;
 
-    const {show} = useSelector(state => state.app, id);
+    const {popup} = useSelector(state => state.app, []);
+    const {over} = useSelector(state => state.app, []);
 
-    const {photoDetails} = useSelector(state => state.app);
-
-    const handlePopup = () => appActions.updateState({photoDetails: true})
-
+    const openPopup = () => {appActions.updateState({ popup: true })};
+    const mouseEnter = () => appActions.updateState({ over: true });
+    const mouseLeave = () => appActions.updateState({ over: false });
 
     return (
-        <Container key={id}
-                   onClick={handlePopup}
-                   onMouseEnter={() => appActions.updateState({show: true})}
-                   onMouseLeave={() => appActions.updateState({show: false})}
+        <Container onClick={openPopup}
+                   onMouseEnter={mouseEnter}
+                   onMouseLeave={mouseLeave}
         >
-
-            {
-                show &&
-                <PhotoOver id={id === id}
-                           user={user}
-                           links={links}
-                />
-            }
-
+        {
+            over &&
+            <PhotoOver id={id === id}
+                       user={user}
+                       links={links}
+            />
+        }
             <img src={urls.small}/>
 
             {
-                photoDetails &&
-                <Popup photoDetails={handlePopup}
-                            id={id}
-                            user={user}
-                            urls={urls}
-                            links={links}
-                />
+                popup &&
+                    <Popup user={user}
+                           urls={urls}
+                           links={links}
+                    />
             }
         </Container>
+
     )
 }
 
@@ -61,6 +58,7 @@ const Container = styled.div`
     bottom: 0;
     display: block;
     width: 100%;
+    color: #60544D;
     height: auto;
     margin-bottom: ${pxToRem(20)};
     cursor: zoom-in;

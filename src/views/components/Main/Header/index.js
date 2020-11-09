@@ -5,6 +5,7 @@ import {withRouter} from "react-router-dom";
 import Top from "./Top";
 import Nav from "./Nav";
 import {pxToRem} from "../../../../common/Text/Text.Styled";
+import Popup from "../Popup";
 
 function Header () {
 

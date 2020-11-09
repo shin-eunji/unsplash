@@ -62,9 +62,9 @@ function QuickMenu (props) {
 const Container = styled.div`
     position: absolute;
     top: ${pxToRem(50)};
-    right: ${pxToRem(240)};
+    right: ${pxToRem(120)};
     min-width: ${pxToRem(160)};
-    max-width: ${pxToRem(296)};
+    width: ${pxToRem(285)};
     position: absolute;
     z-index: 1;
     white-space: nowrap;
@@ -92,9 +92,13 @@ const Container = styled.div`
 const Menu = styled.div`
     display:flex;
     flex-direction:column;
-    align-items:flex-start;   
+    align-items:flex-start;
 `;
 const MenuItem = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content: flex-start;
+    height: ${pxToRem(38)};
     padding: ${pxToRem(8)} ${pxToRem(16)};
     color: #fff;
     font-size: ${pxToRem(14)};

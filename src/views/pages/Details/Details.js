@@ -6,23 +6,13 @@ import {useSelector} from "react-redux";
 function Details (props) {
 
     const {
-
+        urls
     } = props;
-
-    useEffect((data) => {
-        photoActions.searchPhoto(data)
-        console.log("data", data);
-    }, [])
-
-    const {photo} = useSelector(state => state.photo)
-
 
 
     return (
         <Container>
-            {
-                photo.map((data, index) => <Details key={index} {...data} />)
-            }
+            <img src={urls.small} alt="photo"/>
         </Container>
     )
 }

@@ -29,7 +29,7 @@ export default function* () {
 
             if (result) {
                 yield put(Action.Creators.updateState({
-                    searchPhotos: result.data
+                    searchPhotos: result.data.results
                 }))
             }
 
@@ -41,7 +41,7 @@ export default function* () {
 
             if (result) {
                 yield put(Action.Creators.updateState({
-                    search: result.data
+                    search: result.data.results
                 }))
             }
         }),

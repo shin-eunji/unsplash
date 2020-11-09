@@ -3,25 +3,31 @@ import styled from 'styled-components';
 import {AiOutlineEllipsis} from 'react-icons/ai'
 import {pxToRem, TextLink} from "../../../../../common/Text/Text.Styled";
 import {Button} from "../../../../../common/Button/Button.Styled";
-import {photoActions} from "../../../../../redux/actionCreators";
+import {appActions} from "../../../../../redux/actionCreators";
 import {useSelector} from "react-redux";
 import QuickMenu from "./QuickMenu";
 import {navigate} from "../../../../../lib/History";
+import SubmitPhotos from "../../../Submit";
 
 function Menu (props) {
 
     const {} = props;
 
-    const { quickMenu } = useSelector(state => state.photo)
+    const { quickMenu } = useSelector(state => state.app)
+    const { submitPhoto } = useSelector(state => state.app)
 
     const handleMore = () => {
-        photoActions.updateState({ quickMenu: !quickMenu })
+        appActions.updateState({ quickMenu: !quickMenu })
+    }
+
+    const handleSubmit = () => {
+        appActions.updateState({ submitPhoto: true })
     }
 
     return (
         <Container>
+            <MenuItem>Brands</MenuItem>
             <MenuItem onClick={() => navigate('/explore')}>Explore</MenuItem>
-            <MenuItem>Unsplash Awards</MenuItem>
             <MenuItem>
                 <Icon onClick={handleMore}/>
                 {
@@ -29,7 +35,13 @@ function Menu (props) {
                         <QuickMenu/>
                 }
             </MenuItem>
-            <PhotoButton sort={'line'}>Submit a photo</PhotoButton>
+            <PhotoButton sort={'line'}
+                         onClick={handleSubmit}
+            >Submit a photo</PhotoButton>
+            {
+                submitPhoto &&
+                    <SubmitPhotos/>
+            }
         </Container>
     )
 }
