@@ -106,3 +106,22 @@ export const Button = styled.button`
         height: ${pxToRem(50)}      
     `}
 `;
+
+export const lineButton = styled.button`
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    height: ${pxToRem(32)};
+    border-radius: ${pxToRem(5)};
+    line-height: 0;
+    margin-right: ${pxToRem(10)};
+    color: #767676;
+    background-color: #fff;
+    padding: 0 ${pxToRem(10)};
+    border: 1px solid #d1d1d1;
+    cursor: pointer;
+    &:hover {
+        color: #111;
+        border-color: #767676;
+    }
+`;

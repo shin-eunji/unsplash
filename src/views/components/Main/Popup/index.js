@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import {appActions} from "../../../../redux/actionCreators";
 import {ContentContainer} from "../../../../common/Layout/Components.Styled";
@@ -7,27 +7,32 @@ import {AiOutlineClose} from "react-icons/all";
 import Photo from "./Photo";
 import Collections from "./Collections";
 import Profile from "./Profile";
+import Features from "../Features";
 
 function Popup (props) {
 
     const {
         user,
         urls,
+        id,
     } = props;
+
+    useEffect(() => {
+        appActions.updateState()
+    }, [])
+
 
     const closePopup = () => {
         appActions.updateState({ popup: false })
-        console.log("Popup Close");
     }
 
     return (
         <Container onClick={closePopup}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing.
             <SContentContainer>
-                <Profile><img src={user.profile_image.small} alt="profile"/></Profile>
-                <Photo urls={urls.small} />
-                <Collections/>
+                <Profile id={id} user={user}/>
+                <Photo id={id} urls={urls} />
             </SContentContainer>
+
             <ButtonClose onClick={closePopup}>
                 <AiOutlineClose/>
             </ButtonClose>
@@ -37,13 +42,17 @@ function Popup (props) {
 
 const Container = styled.div`
     position:fixed;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color: #fff;
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,.05);
+    background: rgba(0,0,0,0.1);
     padding: ${pxToRem(32)}${pxToRem(120)} ${pxToRem(100)};
     z-index: 1000;
     cursor: zoom-out;
@@ -58,12 +67,13 @@ const SContentContainer = styled(ContentContainer)`
     flex-direction:column;
     align-items:center;
     justify-content:flex-start;
-    width: 80%;
+    width: 90%;
     height: 80%;
     background: #fff;
     border-radius: ${pxToRem(6)};
     padding: ${pxToRem(14)};
-    overflow-y: auto;
+    overflow-y: scroll;
+    cursor: default;
 `;
 const ButtonClose = styled.button`
     position: absolute;

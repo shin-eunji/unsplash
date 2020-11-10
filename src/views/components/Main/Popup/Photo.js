@@ -1,18 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 import {AiOutlineArrowDown, AiOutlinePlus, GoHeart, ImLocation, IoMdShareAlt, RiInformationFill} from "react-icons/all";
-import {HeartButton} from "../../../../common/Button/Button.Styled";
+import {HeartButton, lineButton} from "../../../../common/Button/Button.Styled";
+import {pxToRem} from "../../../../common/Text/Text.Styled";
 
 function Photo (props) {
 
     const {
-        urls
+        id,
+        urls,
     } = props;
 
     return (
         <Container>
             <PhotoImage>
-                <img src={urls.small} alt="photo" />
+                <img id={id} src={urls.small} alt="photo" />
             </PhotoImage>
             <Thumbnail>
                 <Map>
@@ -20,14 +22,14 @@ function Photo (props) {
                     Jenny Lake, Wyoming, USA
                 </Map>
                 <ButtonGroup>
-                    <PhotoButton>
+                    <IconButton>
                         <IoMdShareAlt/>
-                        Share
-                    </PhotoButton>
-                    <PhotoButton>
+                        <span>Share</span>
+                    </IconButton>
+                    <IconButton>
                         <RiInformationFill/>
-                        Info
-                    </PhotoButton>
+                        <span>Info</span>
+                    </IconButton>
                 </ButtonGroup>
             </Thumbnail>
         </Container>
@@ -60,9 +62,10 @@ const ButtonGroup = styled.div`
     align-items:center;
     justify-content: flex-end;
 `;
-const PhotoButton = styled.button`
-    display:flex;
-    align-items:center;
-    justify-content:center;
+const IconButton = styled(lineButton)`
+    cursor: pointer;
+    span {
+        margin-left: ${pxToRem(4)};
+    }
 `;
 export default Photo;

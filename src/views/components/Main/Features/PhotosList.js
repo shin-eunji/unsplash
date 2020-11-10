@@ -17,33 +17,47 @@ function PhotosList(props) {
         links,
     } = props;
 
-    const {popup} = useSelector(state => state.app, []);
-    const {over} = useSelector(state => state.app, []);
+    const {popup} = useSelector(state => state.app);
+    const {over} = useSelector(state => state.app);
 
-    const openPopup = () => {appActions.updateState({ popup: true })};
-    const mouseEnter = () => appActions.updateState({ over: true });
-    const mouseLeave = () => appActions.updateState({ over: false });
+    const openPopup = () => {
+        appActions.updateState({popup: true})
+        if (popup) {
+            appActions.updateState({popup: false})
+        }
+
+        console.log("Popup open");
+    };
+
+    useEffect(() => {
+        appActions.updateState()
+    }, [])
+
+    const mouseEnter = () => appActions.updateState({over: true});
+    const mouseLeave = () => appActions.updateState({over: false});
 
     return (
         <Container onClick={openPopup}
                    onMouseEnter={mouseEnter}
                    onMouseLeave={mouseLeave}
         >
-        {
-            over &&
-            <PhotoOver id={id === id}
-                       user={user}
-                       links={links}
-            />
-        }
+            {
+                over &&
+                <PhotoOver id={id === id}
+                           user={user}
+                           links={links}
+                />
+            }
             <img src={urls.small}/>
 
             {
                 popup &&
-                    <Popup user={user}
-                           urls={urls}
-                           links={links}
-                    />
+                <Popup id={id}
+                       user={user}
+                       urls={urls}
+                       links={links}
+                       popup={openPopup}
+                />
             }
         </Container>
 

@@ -1,21 +1,26 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Button, HeartButtonZ} from "../../../../common/Button/Button.Styled";
+import {Button, HeartButtonZ, lineButton} from "../../../../common/Button/Button.Styled";
 import {AiOutlinePlus, GoHeart} from "react-icons/all";
 import {pxToRem} from "../../../../common/Text/Text.Styled";
 import {navigate} from "../../../../lib/History";
 
 function Profile (props) {
 
-    const {} = props;
+    const {
+        user,
+        id
+    } = props;
 
     return (
         <Container>
             <ContentContainer>
                 <ProfileGroup>
-                    <ProfileImage/>
+                    <ProfileImage>
+                        <img id={id} src={user.profile_image.small} alt="profile"/>
+                    </ProfileImage>
                     <UserName>
-                        Brain
+                        {user.name}
                     </UserName>
                 </ProfileGroup>
 
@@ -55,10 +60,12 @@ const ProfileGroup = styled.div`
 const ProfileImage = styled.div`
     width: ${pxToRem(32)};
     height: ${pxToRem(32)};
-    border: 1px solid #eee;
-    border-radius: ${pxToRem(30)};
     background: #fff;
     margin-right: ${pxToRem(10)};
+    img {
+        border-radius: ${pxToRem(300)};
+    
+    }
 `;
 const UserName = styled.div`
     flex: 1;
@@ -72,23 +79,8 @@ const ButtonGroup = styled.div`
     align-items:center;
     justify-self: flex-end;
 `;
-const IconButton = styled.button`
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    width: 40px;
-    height: ${pxToRem(32)};
-    border-radius: ${pxToRem(5)};
-    line-height: 0;
-    margin-right: ${pxToRem(10)};
-    color: #767676;
-    background-color: #fff;
-    border: 1px solid #d1d1d1;
-    cursor: pointer;
-    &:hover {
-        color: #111;
-        border-color: #767676;
-    }
+const IconButton = styled(lineButton)`
+    
 `;
 const DownloadButton = styled(Button)`
     

@@ -41,6 +41,7 @@ function Search(props) {
         axios.get(url).then((res) => {setResult(res.data.results)})
         console.log("photo", photo);
         // photoActions.search(data.query)
+        navigate(`/photos`)
     }
 
     const handleKeyPress = (e) => {
