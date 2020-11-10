@@ -17,35 +17,6 @@ export default function* () {
             }
         }),
 
-        takeLatest(Action.Types.SEARCH_PHOTO, function* ({keyword}) {
-            console.log("[Saga SEARCH_PHOTO] data", {keyword});
-
-            const data = {
-                page: 1,
-                query: keyword,
-            }
-            const result = yield call(API.searchPhotos)
-            console.log("[Saga SEARCH_PHOTO] data", data);
-
-            if (result) {
-                yield put(Action.Creators.updateState({
-                    searchPhotos: result.data.results
-                }))
-            }
-
-        }),
-
-        takeLatest(Action.Types.SEARCH, function* ({data}) {
-            const result = yield call(API.search)
-            console.log("[Saga SEARCH] data", data);
-
-            if (result) {
-                yield put(Action.Creators.updateState({
-                    search: result.data.results
-                }))
-            }
-        }),
-
         takeLatest(Action.Types.TOPICS_PHOTO, function*({data}) {
             console.log("[Saga TOPICS_PHOTO] data", data);
 

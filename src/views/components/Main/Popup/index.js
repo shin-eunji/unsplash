@@ -28,7 +28,7 @@ function Popup (props) {
 
     return (
         <Container onClick={closePopup}>
-            <SContentContainer>
+            <SContentContainer onClick={e => e.stopPropagation()}>
                 <Profile id={id} user={user}/>
                 <Photo id={id} urls={urls} />
             </SContentContainer>

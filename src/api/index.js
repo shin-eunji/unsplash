@@ -45,6 +45,7 @@ const API = {
     searchPhotos: (data) => Fetch.get(`https://api.unsplash.com/search/photos`, data),
     search: (data) => Fetch.get(`https://api.unsplash.com/search/photos`, data),
     topicsPhotos: (data) => Fetch.get(`https://api.unsplash.com/topics`, data),
+    collection: (data) => Fetch.get('https://api.unsplash.com/search/collections', data)
 
 
 }

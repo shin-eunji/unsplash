@@ -5,9 +5,7 @@ import {pxToRem} from "../../../common/Text/Text.Styled";
 import axios from 'axios'
 import Details from "../../pages/Details/Details";
 import {navigate} from "../../../lib/History";
-import {photoActions} from "../../../redux/actionCreators";
-import {useSelector} from "react-redux";
-import API from "../../../api";
+import {searchActions} from "../../../redux/actionCreators";
 
 function Search(props) {
 
@@ -31,15 +29,18 @@ function Search(props) {
         // photoActions.search(e.target.value)
     }
     useEffect(() => {
-        photoActions.search()
+        searchActions.search()
     }, [])
 
     const handleSubmit = () => {
         const url = `https://api.unsplash.com/search/photos?page=3&query=${photo}&client_id=${client}`;
 
 
-        axios.get(url).then((res) => {setResult(res.data.results)})
-        console.log("photo", photo);
+        axios.get(url).then((res) => {
+            setResult(res.data.results)
+            const result = res.data.results
+        })
+        console.log("result", result);
         // photoActions.search(data.query)
         navigate(`/photos`)
     }
@@ -60,7 +61,7 @@ function Search(props) {
                    onKeyPress={handleKeyPress}
             />
             {
-                result.map((photo) => <Details {...photo}/>)
+                result.map((photo, index) => <Details key={index} {...photo}/>)
             }
         </Container>
     )

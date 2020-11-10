@@ -7,6 +7,8 @@ function Collections (props) {
 
     const {} = props;
 
+
+
     return (
         <Container>
             <Title>Related photos</Title>

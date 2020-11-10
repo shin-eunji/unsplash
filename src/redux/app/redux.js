@@ -5,12 +5,11 @@ const initialState = {
     popup: false,
     quickMenu: false,
     submitPhoto: false,
-    photo: [],
-    clientId: [],
 }
 
 export const Action = createActions({
     updateState: ['state'],
+    getUserInfo: null,
 }, {prefix: 'PHOTO/'})
 
 export const reducer = createReducer(initialState, {
