@@ -6,6 +6,7 @@ import Logo from "./Contents/Logo";
 import SearchForm from "../../SearchForm";
 import Menu from "./Contents/Menu";
 import Member from "./Contents/Member";
+import {ContentContainer} from "../../../../common/Layout/Components.Styled";
 
 function Top(props) {
 
@@ -13,7 +14,7 @@ function Top(props) {
 
     return (
         <Container>
-            <ContentContainer>
+            <SContentContainer>
                 <Logo />
 
                 <SearchContainer>
@@ -22,7 +23,7 @@ function Top(props) {
 
                 <Menu/>
                 <Member/>
-            </ContentContainer>
+            </SContentContainer>
         </Container>
     )
 }
@@ -33,7 +34,7 @@ const Container = styled.div`
     width: 100%;
     height: ${pxToRem(56)};
 `
-const ContentContainer = styled.div`
+const SContentContainer = styled(ContentContainer)`
     display:flex;
     align-items:center;
     justify-content:space-between;

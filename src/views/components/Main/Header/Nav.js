@@ -4,6 +4,7 @@ import {navLinks} from "./Contents/Navigation";
 import NavItem from "./Contents/NavItem";
 import {pxToRem, TextLink} from "../../../../common/Text/Text.Styled";
 import {navigate} from "../../../../lib/History";
+import {ContentContainer} from "../../../../common/Layout/Components.Styled";
 
 function Nav (props) {
 
@@ -11,24 +12,29 @@ function Nav (props) {
 
     return (
         <Container>
-            <Item onClick={() => navigate('/')}>Editorial</Item>
-            <Menu>
-                
-                {
-                    navLinks.map((item, index) => <NavItem key={index} {...item}/>)
-                }
-            </Menu>
-            <Item onClick={() => navigate('/topics')}>View all</Item>
+            <SContentContainer>
+                <Item onClick={() => navigate('/')}>Editorial</Item>
+                <Menu>
+
+                    {
+                        navLinks.map((item, index) => <NavItem key={index} {...item}/>)
+                    }
+                </Menu>
+                <Item onClick={() => navigate('/topics')}>View all</Item>
+            </SContentContainer>
         </Container>
     )
 }
 
 const Container = styled.div`
+`
+const SContentContainer = styled(ContentContainer)`
     display:flex;
     position:relative;
     align-items:center;
-    justify-content: flex-start;
+    width: 100%;
     height: ${pxToRem(56)};
+    justify-content: flex-start;
 `
 const Item = styled(TextLink)`
     position:relative;
@@ -55,7 +61,6 @@ const Menu = styled.div`
         content: "";
         position: absolute;
         top: 0;
-        left: ${pxToRem(70)};
         width: 1px;
         height: ${pxToRem(32)};
         background: #aaa;
