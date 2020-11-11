@@ -37,6 +37,7 @@ const Container = styled.div`
     flex-direction:column;
     align-items: center;
     justify-content:center;
+    width: 100%;
     height: ${pxToRem(600)};
     margin-top: ${pxToRem(112)};
     background: url("https://source.unsplash.com/category/nature/1600x900") 50% 70% / cover no-repeat;
@@ -54,7 +55,7 @@ const Container = styled.div`
 `
 const SContentContainer = styled.div`
     position:relative;
-    width: ${pxToRem(864)};
+    width: 50%;
     margin: 0 auto;
     z-index: 10;
 `;

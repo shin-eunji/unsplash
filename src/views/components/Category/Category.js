@@ -22,6 +22,8 @@ const Container = styled.div`
     display:flex;
     align-items:center;
     justify-content: space-between;
-    margin-bottom: ${pxToRem(72)};  
+    margin-bottom: ${pxToRem(72)};
+    overflow-x: scroll;
+    overflow-y: hidden;  
 `
 export default Category;
