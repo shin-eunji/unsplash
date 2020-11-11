@@ -2,6 +2,7 @@ import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import Routes from "./Routes";
 import {HISTORY} from './lib/History'
+import {appActions} from "./redux/actionCreators";
 
 function App (props) {
 
@@ -9,6 +10,7 @@ function App (props) {
     } = props;
 
     useEffect(() => {
+        appActions.updateState()
         HISTORY.listen((location, action) => {
             if(action === 'PUSH') {
                 window.scrollTo(0, 0)

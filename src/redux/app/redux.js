@@ -12,7 +12,7 @@ export const Action = createActions({
     updateState: ['state'],
     list: ['data'],
     getUserInfo: null,
-}, {prefix: 'PHOTO/'})
+}, {prefix: 'APP/'})
 
 export const reducer = createReducer(initialState, {
     [Action.Types.UPDATE_STATE]: (state, {state: newState}) => ({
