@@ -17,48 +17,46 @@ function PhotosList(props) {
         links,
     } = props;
 
-    const {popup} = useSelector(state => state.app);
-    const {over} = useSelector(state => state.app);
+    const [over, setOver] = useState(false)
+    const [popup, setPopup] = useState(false)
+
+    const mouseEnter = () => setOver(true);
+    const mouseLeave = () => setOver(false);
 
     const openPopup = () => {
-        appActions.updateState({popup: true})
+        setPopup(true)
         if (popup) {
-            appActions.updateState({popup: false})
+            setPopup(false)
         }
-
-        console.log("Popup open");
     };
 
     useEffect(() => {
         appActions.updateState()
     }, [])
 
-    const mouseEnter = () => appActions.updateState({over: true});
-    const mouseLeave = () => appActions.updateState({over: false});
 
     return (
-        <Container onClick={openPopup}
-                   onMouseEnter={mouseEnter}
-                   onMouseLeave={mouseLeave}
-        >
-            {
-                over &&
-                <PhotoOver id={id === id}
-                           user={user}
-                           links={links}
-                />
-            }
+        <Container onClick={openPopup}>
+            <div onMouseEnter={mouseEnter} onMouseLeave={mouseLeave}>
             <img src={urls.small} alt={user.username}/>
 
-            {
-                popup &&
-                <Popup id={id}
-                       user={user}
-                       urls={urls}
-                       links={links}
-                       popup={openPopup}
-                />
-            }
+                {
+                    over &&
+                    <PhotoOver id={id === id}
+                               user={user}
+                               links={links}
+                    />
+                }
+                {
+                    popup &&
+                    <Popup id={id}
+                           user={user}
+                           urls={urls}
+                           links={links}
+                           popup={openPopup}
+                    />
+                }
+            </div>
         </Container>
 
     )

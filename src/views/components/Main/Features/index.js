@@ -10,9 +10,8 @@ import PhotosList from "./PhotosList";
 
 function Features() {
 
-    useEffect((data) => {
-        photoActions.listPhoto(data)
-        console.log("data", data);
+    useEffect(() => {
+        photoActions.listPhoto()
     }, [])
 
     const {list} = useSelector(state => state.photo)

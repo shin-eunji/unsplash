@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {Route, Switch} from "react-router-dom";
 
 import Home from "./views/pages/Home";
-import Details from "./views/pages/Details/Details";
+import Details from "./views/pages/Details";
 
 import Sign from "./views/pages/Sign";
 import SignIn from "./views/pages/Sign/SignIn";
@@ -33,10 +33,6 @@ function Routes (props) {
                 <Route exact path={'/Sign'} component={Sign} />
                 <Route path={'/sign/login'} component={SignIn}/>
                 <Route path={'/sign/join'} component={SignUp}/>
-
-                <Route path={'/detail'} component={Search}/>
-
-
             </Switch>
         </Container>
     )

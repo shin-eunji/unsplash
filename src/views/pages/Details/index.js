@@ -2,19 +2,23 @@ import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import Top from "../../components/Main/Header/Top";
 import {ContentContainer} from "../../../common/Layout/Components.Styled";
+import {searchActions} from "../../../redux/actionCreators";
 
 function Details (props) {
 
     const {
-        urls
     } = props;
+
+    useEffect(() => {
+        searchActions.getPhoto()
+    }, [])
 
 
     return (
         <Container>
             <Top/>
             <SContentContainer>
-                {/*<img src={urls.small} alt="photo"/>*/}
+
             </SContentContainer>
         </Container>
     )

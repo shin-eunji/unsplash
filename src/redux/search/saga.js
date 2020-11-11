@@ -8,7 +8,7 @@ export default function*() {
         takeLatest(Action.Types.GET_PHOTO, function*({data}) {
             console.log("[Saga GET_PHOTO] data", data);
 
-            const result = yield call(API.getPhoto, {data})
+            const result = yield call(API.getPhotos)
             console.log("[Saga GET_PHOTO] API", result);
             if(result) {
                 yield put(Action.Creators.updateState({
@@ -17,7 +17,7 @@ export default function*() {
             }
         }),
         takeLatest(Action.Types.SEARCH_PHOTO, function*({keyword}) {
-            console.log("[Saga SEARCH_PHOTO] keyword", keyword);
+            console.log("[Saga SEARCH_PHOTO] data", data);
 
             const data = {
                 page: 1,
@@ -25,11 +25,11 @@ export default function*() {
             }
 
             const result = yield call(API.searchPhotos, {data})
-            console.log("result", result);
+            console.log("[Saga SEARCH_PHOTO] API", result);
 
-            if(result) {
+            if (result) {
                 yield put(Action.Creators.updateState({
-                    values: result.data
+                    search: result.data
                 }))
             }
         }),

@@ -5,37 +5,34 @@ import {pxToRem} from "../../../common/Text/Text.Styled";
 import {navigate} from "../../../lib/History";
 import {searchActions} from "../../../redux/actionCreators";
 import {useSelector} from "react-redux";
+import PhotosList from "../Main/Features/PhotosList";
+import Search from "../../pages/Search";
 
-function Search(props) {
+function SearchForm(props) {
 
     const {} = props;
 
-    const {search} = useSelector(state => state.search)
-    const {values} = useSelector(state => state.search)
-
-    useEffect(() => {
-        searchActions.updateState(values)
-    },[])
-
-    useEffect((keyword) => {
-        searchActions.searchPhoto(keyword)
-        console.log("data", keyword);
-    }, [])
 
     useEffect((data) => {
-        searchActions.getPhoto(data)
-        console.log("data", data);
+        searchActions.searchPhoto(data)
+        console.log("keyword", data);
     }, [])
 
+    const [values, setValue] = useState({})
+
+    const {search} = useSelector(state => state.search)
 
     const handleChange = (e) => {
-        searchActions.updateState({values: e.target.value})
+        setValue({
+            ...values,
+            [e.target.search]: e.target.value
+        })
     }
 
-    const handleSubmit = (values) => {
-        const result = searchActions.searchPhoto(values)
-        console.log("result", result);
-        // navigate('/detail')
+    const handleSubmit = () => {
+        console.log("values", values);
+        searchActions.searchPhoto(values)
+        navigate('/photos')
     }
 
     const handleKeyPress = (e) => {
@@ -82,4 +79,4 @@ const Input = styled.input`
     background: none;
     margin-left: ${pxToRem(10)};
 `;
-export default Search;
+export default SearchForm;
