@@ -48,7 +48,7 @@ function PhotosList(props) {
                            links={links}
                 />
             }
-            <img src={urls.small}/>
+            <img src={urls.small} alt={user.username}/>
 
             {
                 popup &&

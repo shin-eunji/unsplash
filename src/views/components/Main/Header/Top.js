@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {pxToRem} from "../../../../common/Text/Text.Styled";
 
 import Logo from "./Contents/Logo";
-import Search from "../../Search";
+import SearchForm from "../../SearchForm";
 import Menu from "./Contents/Menu";
 import Member from "./Contents/Member";
 
@@ -17,7 +17,7 @@ function Top(props) {
                 <Logo />
 
                 <SearchContainer>
-                    <Search />
+                    <SearchForm />
                 </SearchContainer>
 
                 <Menu/>

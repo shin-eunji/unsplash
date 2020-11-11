@@ -14,7 +14,7 @@ function Details (props) {
         <Container>
             <Top/>
             <SContentContainer>
-                <img src={urls.small} alt="photo"/>
+                {/*<img src={urls.small} alt="photo"/>*/}
             </SContentContainer>
         </Container>
     )

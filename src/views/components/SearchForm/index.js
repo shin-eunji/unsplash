@@ -2,47 +2,40 @@ import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {AiOutlineSearch} from 'react-icons/ai';
 import {pxToRem} from "../../../common/Text/Text.Styled";
-import axios from 'axios'
-import Details from "../../pages/Details/Details";
 import {navigate} from "../../../lib/History";
 import {searchActions} from "../../../redux/actionCreators";
+import {useSelector} from "react-redux";
 
 function Search(props) {
 
     const {} = props;
-    //
-    // const {search} = useSelector(state => state.photo)
-    //
-    // useEffect((data) => {
-    //     photoActions.searchPhoto(data)
-    // }, [])
-    //
-    //
-    // const {photo} = useSelector(state => state.photo)
 
-    const [photo, setPhoto] = useState([])
-    const [client, setClient] = useState('t_jbP7JejOj1keyZ7UiEl1BZcoPHG3vxmy3rPUGhVRc')
-    const [result, setResult] = useState([])
+    const {search} = useSelector(state => state.search)
+    const {values} = useSelector(state => state.search)
 
-    const handleChange = (e) => {
-        setPhoto(e.target.value)
-        // photoActions.search(e.target.value)
-    }
     useEffect(() => {
-        searchActions.search()
+        searchActions.updateState(values)
+    },[])
+
+    useEffect((keyword) => {
+        searchActions.searchPhoto(keyword)
+        console.log("data", keyword);
     }, [])
 
-    const handleSubmit = () => {
-        const url = `https://api.unsplash.com/search/photos?page=3&query=${photo}&client_id=${client}`;
+    useEffect((data) => {
+        searchActions.getPhoto(data)
+        console.log("data", data);
+    }, [])
 
 
-        axios.get(url).then((res) => {
-            setResult(res.data.results)
-            const result = res.data.results
-        })
+    const handleChange = (e) => {
+        searchActions.updateState({values: e.target.value})
+    }
+
+    const handleSubmit = (values) => {
+        const result = searchActions.searchPhoto(values)
         console.log("result", result);
-        // photoActions.search(data.query)
-        navigate(`/photos`)
+        // navigate('/detail')
     }
 
     const handleKeyPress = (e) => {
@@ -60,9 +53,6 @@ function Search(props) {
                    onChange={handleChange}
                    onKeyPress={handleKeyPress}
             />
-            {
-                result.map((photo, index) => <Details key={index} {...photo}/>)
-            }
         </Container>
     )
 }

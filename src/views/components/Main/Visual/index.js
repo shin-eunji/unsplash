@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Search from "../../Search";
+import SearchForm from "../../SearchForm";
 import {Color} from "../../../../common/Color/Color.Styled";
 import {pxToRem} from "../../../../common/Text/Text.Styled";
 import Thumbnail from "./Thumbnail";
@@ -21,7 +21,7 @@ function Visual(props) {
                 </Text>
 
                 <SearchContainer>
-                    <Search/>
+                    <SearchForm/>
                 </SearchContainer>
 
                 <Tag/>

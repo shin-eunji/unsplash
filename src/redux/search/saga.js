@@ -5,43 +5,31 @@ import API from "../../api";
 
 export default function*() {
     yield all([
-        takeLatest(Action.Types.collection, function*(data) {
-            console.log("data", data);
+        takeLatest(Action.Types.GET_PHOTO, function*({data}) {
+            console.log("[Saga GET_PHOTO] data", data);
 
-            const result = yield call(API.collection)
-            console.log("API", result);
+            const result = yield call(API.getPhoto, {data})
+            console.log("[Saga GET_PHOTO] API", result);
             if(result) {
-                yield put(Action.Creators.collection({
-                    collection: result.data
+                yield put(Action.Creators.updateState({
+                    search: result.data
                 }))
             }
         }),
-
-        takeLatest(Action.Types.SEARCH_PHOTO, function* ({keyword}) {
-            console.log("[Saga SEARCH_PHOTO] data", {keyword});
+        takeLatest(Action.Types.SEARCH_PHOTO, function*({keyword}) {
+            console.log("[Saga SEARCH_PHOTO] keyword", keyword);
 
             const data = {
                 page: 1,
-                query: keyword,
-            }
-            const result = yield call(API.searchPhotos)
-            console.log("[Saga SEARCH_PHOTO] data", data);
-
-            if (result) {
-                yield put(Action.Creators.updateState({
-                    searchPhotos: result.data.results
-                }))
+                query: keyword
             }
 
-        }),
+            const result = yield call(API.searchPhotos, {data})
+            console.log("result", result);
 
-        takeLatest(Action.Types.SEARCH, function* ({data}) {
-            const result = yield call(API.search)
-            console.log("[Saga SEARCH] data", data);
-
-            if (result) {
+            if(result) {
                 yield put(Action.Creators.updateState({
-                    search: result.data.results
+                    values: result.data
                 }))
             }
         }),

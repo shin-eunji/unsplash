@@ -11,9 +11,8 @@ import SignUp from "./views/pages/Sign/SignUp";
 
 import Explore from "./views/pages/Explore";
 import Topics from "./views/pages/Topics";
-import NavItem from "./views/components/Main/Header/Contents/NavItem";
-import {navLinks} from "./views/components/Main/Header/Contents/Navigation";
-import Collections from "./views/components/Main/Popup/Collections";
+import Search from "./views/pages/Search";
+
 
 
 function Routes (props) {
@@ -35,7 +34,7 @@ function Routes (props) {
                 <Route path={'/sign/login'} component={SignIn}/>
                 <Route path={'/sign/join'} component={SignUp}/>
 
-                <Route path={navLinks.to} component={Collections}/>
+                <Route path={'/detail'} component={Search}/>
 
 
             </Switch>

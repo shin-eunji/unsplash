@@ -5,10 +5,12 @@ const initialState = {
     popup: false,
     quickMenu: false,
     submitPhoto: false,
+    listPhoto: []
 }
 
 export const Action = createActions({
     updateState: ['state'],
+    list: ['data'],
     getUserInfo: null,
 }, {prefix: 'PHOTO/'})
 

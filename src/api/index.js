@@ -42,8 +42,8 @@ const Fetch = {
 
 const API = {
     listPhotos: (data) => Fetch.get(`https://api.unsplash.com/photos`, data),
-    searchPhotos: (data) => Fetch.get(`https://api.unsplash.com/search/photos`, data),
-    search: (data) => Fetch.get(`https://api.unsplash.com/search/photos`, data),
+    getPhoto: (data) => Fetch.get(`https://api.unsplash.com/search/photos`, data),
+    searchPhotos: (data, page, keyword) => Fetch.get(`https://api.unsplash.com/search/photos?page=${page}&query=${keyword}`, data),
     topicsPhotos: (data) => Fetch.get(`https://api.unsplash.com/topics`, data),
     collection: (data) => Fetch.get('https://api.unsplash.com/search/collections', data)
 
