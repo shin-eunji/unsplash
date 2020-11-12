@@ -47,7 +47,8 @@ const API = {
     getTopics: (data) => Fetch.get(`https://api.unsplash.com/topics`, data),
     getTopicsBySlug: (slug) => Fetch.get(`https://api.unsplash.com/topics/${slug}`),
 
-
+    searchPhotos: (data) => Fetch.get(`https://api.unsplash.com/search/photos`, data),
+    getToKeyword: (query) => Fetch.get(`https://api.unsplash.com/search/photos/${query}`),
 }
 
 export default API;

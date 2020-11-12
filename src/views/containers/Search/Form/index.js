@@ -4,24 +4,25 @@ import {AiOutlineSearch} from 'react-icons/ai';
 import {pxToRem} from "../../../../common/Text/Text.Styled";
 import {navigate} from "../../../../lib/History";
 import {searchActions} from "../../../../redux/actionCreators";
+import {useSelector} from "react-redux";
 
 function SearchForm(props) {
 
     const {} = props;
 
-    // const [values, setValue] = useState({})
-    //
-    // const handleChange = (e) => {
-    //     setValue({
-    //         ...values,
-    //         [e.target.search]: e.target.value
-    //     })
-    // }
+    const [values, setValue] = useState("")
+
+    const handleChange = (e) => {
+        setValue({
+            ...values,
+            query: e.target.value
+        })
+    }
 
     const handleSubmit = () => {
         console.log("values", values);
-        searchActions.searchPhoto(values)
-        navigate('/photos')
+        searchActions.searchPhotos(values)
+        navigate('/s/photos/:query')
     }
 
     const handleKeyPress = (e) => {

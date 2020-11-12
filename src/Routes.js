@@ -14,6 +14,8 @@ import Index from "./views/components/Header/Lnb";
 import TopicsLnb from "./views/components/Header/Lnb/TopicsLnb";
 import Details from "./views/components/Topics/Details";
 import Topics from "./views/pages/Topics";
+import Search from "./views/pages/Search";
+import List from "./views/pages/Search/List";
 
 
 
@@ -40,11 +42,16 @@ function Routes (props) {
                 <Route exact path={'/t'} component={Topics} />
                 <Route exact path={'/t/:slug'} component={Details} />
 
+                <Route exact path={'/s/photos'} component={Search} />
+                <Route exact path={'/s/photos/:query'} component={List} />
+
                 <Route exact path={'/explore'} component={Explore} />
 
                 <Route exact path={'/Sign'} component={Sign} />
                 <Route path={'/sign/login'} component={SignIn}/>
                 <Route path={'/sign/join'} component={SignUp}/>
+
+
             </Switch>
         </Container>
     )

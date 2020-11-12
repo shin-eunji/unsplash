@@ -10,7 +10,7 @@ function Search (props) {
     return (
         <Container>
             <Switch>
-                <Route exact path={'/photos'} component={List}/>
+                <Route exact path={'/search/photos'} component={List}/>
             </Switch>
         </Container>
     )

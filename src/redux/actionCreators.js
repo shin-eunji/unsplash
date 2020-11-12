@@ -4,7 +4,7 @@ import {bindActionCreators} from "redux";
 import {Action as appAction} from './app/redux';
 import {Action as photoAction} from './photo/redux';
 import {Action as authAction} from './auth/redux';
-import {Action as searchAction} from './auth/redux';
+import {Action as searchAction} from './search/redux';
 import {Action as topicsAction} from './topics/redux';
 
 const {dispatch} = store;
