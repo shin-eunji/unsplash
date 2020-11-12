@@ -6,6 +6,7 @@ import {useSelector} from "react-redux";
 import {photoActions} from "../../../redux/actionCreators";
 
 import Item from "./Item";
+import {ContentContainer} from "../../../common/Layout/Components.Styled";
 
 function Photos() {
 
@@ -16,17 +17,22 @@ function Photos() {
     }, [])
 
     return (
-        <Container>
-            <List>
-            {
-                list.map((item, index) => <Item key={index} {...item} />)
-            }
-            </List>
-        </Container>
+        <SContentContainer>
+            <Container>
+                    <List>
+                    {
+                        list.map((item, index) => <Item key={index} {...item} />)
+                    }
+                    </List>
+            </Container>
+        </SContentContainer>
     )
 
 }
 
+const SContentContainer = styled(ContentContainer)`
+    
+`;
 const Container = styled.div`
     line-height: 0;
     margin-top: 10px;

@@ -27,11 +27,11 @@ export default function* () {
 
             if (result) {
 
-                const {topics} = yield select()
+                const {query} = yield select()
                 yield put(Action.Creators.updateState({
                     detail: {
-                        ...topics.detail,
-                        [result?.data?.slug]: result.data
+                        ...query.detail,
+                        [result?.data?.query]: result.data
                     }
                 }))
             }

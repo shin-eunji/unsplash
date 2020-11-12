@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {Route, Switch, withRouter} from "react-router-dom";
 
@@ -16,13 +16,16 @@ import Details from "./views/components/Topics/Details";
 import Topics from "./views/pages/Topics";
 import Search from "./views/pages/Search";
 import List from "./views/pages/Search/List";
+import {useSelector} from "react-redux";
+import {searchActions} from "./redux/actionCreators";
 
 
 
 function Routes (props) {
 
     const {
-        location
+        location,
+        match
     } = props;
 
     const RenderHeader = (pathname) => {
@@ -32,18 +35,18 @@ function Routes (props) {
             case '/t': return <Header><TopicsLnb/></Header>
         }
     }
-
+    const query = match.params.query;
 
     return (
         <Container>
             <RenderHeader pathname={location.pathname}/>
             <Switch>
                 <Route exact path={'/'} component={Home} />
+
                 <Route exact path={'/t'} component={Topics} />
                 <Route exact path={'/t/:slug'} component={Details} />
 
-                <Route exact path={'/s/photos'} component={Search} />
-                <Route exact path={'/s/photos/:query'} component={List} />
+                <Route exact path={`/s/photos/:query`} component={List} />
 
                 <Route exact path={'/explore'} component={Explore} />
 

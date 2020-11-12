@@ -51,7 +51,7 @@ const PhotoImage = styled.div`
     padding: ${pxToRem(20)};
     img {
         width: auto;
-        height: 100%;
+        height: auto;
     }
 `;
 const Thumbnail = styled.div`

@@ -21,9 +21,6 @@ function Details (props) {
         }
     }, [slug])
 
-
-
-
     return (
         <Container>
             {data?.title}

@@ -22,7 +22,6 @@ function SearchForm(props) {
     const handleSubmit = () => {
         console.log("values", values);
         searchActions.searchPhotos(values)
-        navigate('/s/photos/:query')
     }
 
     const handleKeyPress = (e) => {

@@ -18,8 +18,20 @@ function Tags(props) {
 }
 
 const Container = styled.div`
+    display:flex;
+    align-items:center;
+    overflow: hidden;
+    overflow-x: scroll;
 `
 const Tag = styled.div`
-    
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width: ${pxToRem(135)};
+    height: ${pxToRem(40)};
+    border: 1px solid #d1d1d1;
+    border-radius: 5px;
+    text-align:center;
+    overflow: hidden;
 `;
 export default Tags;

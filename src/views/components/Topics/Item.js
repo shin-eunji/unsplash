@@ -48,7 +48,6 @@ function Item (props) {
             </Text>
             <Status sort={featured}>
                 <Icon sort={featured}></Icon>
-                {featured}
                 {status}
             </Status>
         </Container>
