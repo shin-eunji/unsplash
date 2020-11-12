@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import Visual from "../../components/Visual";
-import Features from "../../containers/Home/Features";
+import Photos from "../../containers/Photos";
 
 function Home (props) {
 
@@ -12,7 +12,7 @@ function Home (props) {
     return (
         <Container>
             <Visual />
-            <Features />
+            <Photos />
         </Container>
     )
 }

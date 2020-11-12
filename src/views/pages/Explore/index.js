@@ -8,9 +8,7 @@ import {ContentContainer} from "../../../common/Layout/Components.Styled";
 import {category} from "../../components/Category/CategoryList";
 
 import SubTitle from "../../components/Text/Title/SubTitle";
-import Features from "../../containers/Home/Features";
 import Category from "../../components/Category/Category";
-import Gnb from "../../components/Header/Gnb";
 
 function Explore(props) {
 
@@ -25,7 +23,6 @@ function Explore(props) {
                 <Category data={category}/>
 
                 <SubTitle data={subTitle.free}/>
-                <Features/>
             </SContentContainer>
         </Container>
     )

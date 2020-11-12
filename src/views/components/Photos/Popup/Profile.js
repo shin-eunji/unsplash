@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
-import {Button, HeartButtonZ, lineButton} from "../../../common/Button/Button.Styled";
+import {Button, HeartButtonZ, lineButton} from "../../../../common/Button/Button.Styled";
 import {AiOutlinePlus, GoHeart} from "react-icons/all";
-import {pxToRem} from "../../../common/Text/Text.Styled";
-import {navigate} from "../../../lib/History";
+import {pxToRem} from "../../../../common/Text/Text.Styled";
+import {navigate} from "../../../../lib/History";
 
 function Profile (props) {
 
@@ -16,12 +16,13 @@ function Profile (props) {
         <Container>
             <ContentContainer>
                 <ProfileGroup>
-                    <ProfileImage>
+                    <Image>
                         <img id={id} src={user.profile_image.small} alt="profile"/>
-                    </ProfileImage>
-                    <UserName>
-                        {user.name}
-                    </UserName>
+                    </Image>
+                    <Name>
+                        <User>{user.name}</User>    
+                        <UserName>{user.username}</UserName>    
+                    </Name>
                 </ProfileGroup>
 
                 <ButtonGroup>
@@ -57,7 +58,7 @@ const ProfileGroup = styled.div`
     align-items:center;
     justify-content:flex-start;
 `;
-const ProfileImage = styled.div`
+const Image = styled.div`
     width: ${pxToRem(32)};
     height: ${pxToRem(32)};
     background: #fff;
@@ -67,12 +68,20 @@ const ProfileImage = styled.div`
     
     }
 `;
-const UserName = styled.div`
+const Name = styled.div`
+    display:flex;
+    align-items:center;
     flex: 1;
+`;
+const User = styled.div`
     color: #000;
     text-shadow: 0 1px 8px rgba(0,0,0,.1);
     font-size: ${pxToRem(15)};
     font-weight: 400;
+    
+`;
+const UserName = styled.div`
+    
 `;
 const ButtonGroup = styled.div`
     display:flex;

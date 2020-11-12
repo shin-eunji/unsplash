@@ -1,26 +1,20 @@
 import React, {useEffect} from 'react';
 import styled from 'styled-components';
-import {appActions} from "../../../redux/actionCreators";
-import {ContentContainer} from "../../../common/Layout/Components.Styled";
-import {pxToRem} from "../../../common/Text/Text.Styled";
+import {appActions} from "../../../../redux/actionCreators";
+import {ContentContainer} from "../../../../common/Layout/Components.Styled";
+import {pxToRem} from "../../../../common/Text/Text.Styled";
 import {AiOutlineClose} from "react-icons/all";
 import Photo from "./Photo";
-import Collections from "./Collections";
 import Profile from "./Profile";
-import Features from "../../containers/Home/Features";
 
 function Popup (props) {
 
     const {
         user,
         urls,
-        id,
+        sponsorship,
+        alt_description,
     } = props;
-
-    useEffect(() => {
-        appActions.updateState()
-    }, [])
-
 
     const closePopup = () => {
         appActions.updateState({ popup: false })
@@ -28,14 +22,13 @@ function Popup (props) {
 
     return (
         <Container onClick={closePopup}>
+
             <SContentContainer onClick={e => e.stopPropagation()}>
-                <Profile id={id} user={user}/>
-                <Photo id={id} urls={urls} />
+                <Profile user={user} />
+                <Photo urls={urls} alt_description={alt_description} />
             </SContentContainer>
 
-            <ButtonClose onClick={closePopup}>
-                <AiOutlineClose/>
-            </ButtonClose>
+            <CloseButton onClick={closePopup}><AiOutlineClose/></CloseButton>
         </Container>
     )
 }
@@ -52,7 +45,7 @@ const Container = styled.div`
     bottom: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.1);
+    background: rgba(0,0,0,.6);
     padding: ${pxToRem(32)}${pxToRem(120)} ${pxToRem(100)};
     z-index: 1000;
     cursor: zoom-out;
@@ -75,7 +68,7 @@ const SContentContainer = styled(ContentContainer)`
     overflow-y: scroll;
     cursor: default;
 `;
-const ButtonClose = styled.button`
+const CloseButton = styled.button`
     position: absolute;
     top: ${pxToRem(10)};
     left: ${pxToRem(10)};

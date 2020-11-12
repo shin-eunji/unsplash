@@ -9,14 +9,14 @@ function SearchForm(props) {
 
     const {} = props;
 
-    const [values, setValue] = useState({})
-
-    const handleChange = (e) => {
-        setValue({
-            ...values,
-            [e.target.search]: e.target.value
-        })
-    }
+    // const [values, setValue] = useState({})
+    //
+    // const handleChange = (e) => {
+    //     setValue({
+    //         ...values,
+    //         [e.target.search]: e.target.value
+    //     })
+    // }
 
     const handleSubmit = () => {
         console.log("values", values);

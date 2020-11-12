@@ -1,11 +1,7 @@
 import {createActions, createReducer} from 'reduxsauce';
 
 const initialState = {
-    search: [],
-    value: "",
-    photos: [],
-    photoPages: null
-
+    list: [],
 }
 
 export const Action = createActions({

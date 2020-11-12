@@ -7,7 +7,8 @@ const initialState = {
 
 export const Action = createActions({
     updateState: ['state'],
-    listPhoto: ['data'],
+    getPhotos: ['data'],
+    getPhotoById: ['data'],
 }, {prefix: 'PHOTO/'})
 
 export const reducer = createReducer(initialState, {

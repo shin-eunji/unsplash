@@ -1,20 +1,20 @@
 import React from 'react';
 import styled from 'styled-components';
 import {AiOutlineArrowDown, AiOutlinePlus, GoHeart, ImLocation, IoMdShareAlt, RiInformationFill} from "react-icons/all";
-import {HeartButton, lineButton} from "../../../common/Button/Button.Styled";
-import {pxToRem} from "../../../common/Text/Text.Styled";
+import {HeartButton, lineButton} from "../../../../common/Button/Button.Styled";
+import {pxToRem} from "../../../../common/Text/Text.Styled";
 
 function Photo (props) {
 
     const {
-        id,
         urls,
+        alt_description,
     } = props;
 
     return (
         <Container>
             <PhotoImage>
-                <img id={id} src={urls.small} alt="photo" />
+                <img src={urls.small} alt={alt_description} />
             </PhotoImage>
             <Thumbnail>
                 <Map>
@@ -38,14 +38,20 @@ function Photo (props) {
 
 const Container = styled.div`
     display:flex;
+    flex: 1;
     flex-direction:column;
-    align-items:center;
-    justify-content:center;
     width: 100%;
+    justify-content:center;
 `
 const PhotoImage = styled.div`
+    flex: 1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: ${pxToRem(20)};
     img {
         width: auto;
+        height: 100%;
     }
 `;
 const Thumbnail = styled.div`

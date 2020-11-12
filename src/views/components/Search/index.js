@@ -1,17 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function Item (props) {
+function Search (props) {
 
     const {} = props;
 
     return (
         <Container>
-            Item
+            Search
         </Container>
     )
 }
 
 const Container = styled.div`
 `
-export default Item;
+export default Search;
