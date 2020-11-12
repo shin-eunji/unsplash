@@ -5,7 +5,7 @@ import {pxToRem} from "../../../common/Text/Text.Styled";
 import {ContentContainer} from "../../../common/Layout/Components.Styled";
 import {useForm} from 'react-hook-form';
 import Facebook from "../../components/Auth/Facebook";
-import Input from "../../components/Form/Input";
+import Input from "../../containers/Home/Form/Input";
 import Validation, {ValidationTypes} from "../../../lib/Validate";
 
 function SignIn(props) {

@@ -8,9 +8,9 @@ import {ContentContainer} from "../../../common/Layout/Components.Styled";
 import {category} from "../../components/Category/CategoryList";
 
 import SubTitle from "../../components/Text/Title/SubTitle";
-import Features from "../../components/Main/Features";
+import Features from "../../containers/Home/Features";
 import Category from "../../components/Category/Category";
-import Top from "../../components/Main/Header/Top";
+import Gnb from "../../components/Header/Gnb";
 
 function Explore(props) {
 
@@ -18,9 +18,6 @@ function Explore(props) {
 
     return (
         <Container>
-            <Header>
-                <Top/>
-            </Header>
             <SContentContainer>
                 <Title data={Index.explore}/>
 
@@ -44,7 +41,6 @@ const Header = styled.div`
     flex-direction:column;
     width: 100%;
     background: #fff;
-    padding: 0 ${pxToRem(20)};
     z-index: 100;
 `;
 const SContentContainer = styled(ContentContainer)`

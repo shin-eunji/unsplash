@@ -1,10 +1,8 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styled from 'styled-components';
 
-import Header from "../../components/Main/Header";
-import Visual from "../../components/Main/Visual";
-import Features from "../../components/Main/Features";
-import Footer from "../../components/Main/Footer";
+import Visual from "../../components/Visual";
+import Features from "../../containers/Home/Features";
 
 function Home (props) {
 
@@ -13,10 +11,8 @@ function Home (props) {
 
     return (
         <Container>
-            <Header />
             <Visual />
             <Features />
-            <Footer/>
         </Container>
     )
 }

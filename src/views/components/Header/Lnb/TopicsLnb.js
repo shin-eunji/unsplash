@@ -1,18 +1,17 @@
 import React from 'react';
 import styled from 'styled-components';
-import TopicsAll from "../../components/Topics";
 
-function Topics (props) {
+function TopicsLnb (props) {
 
     const {} = props;
 
     return (
         <Container>
-            <TopicsAll/>
+            TopicsLnb
         </Container>
     )
 }
 
 const Container = styled.div`
 `
-export default Topics;
+export default TopicsLnb;

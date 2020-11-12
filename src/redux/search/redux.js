@@ -2,14 +2,16 @@ import {createActions, createReducer} from 'reduxsauce';
 
 const initialState = {
     search: [],
-    values: '',
+    value: "",
+    photos: [],
+    photoPages: null
 
 }
 
 export const Action = createActions({
     updateState: ['state'],
+    getPhoto: ['data'],
     searchPhoto: ['keyword'],
-    getPhoto: ['data']
 }, {prefix: 'SEARCH/'})
 
 export const reducer = createReducer(initialState, {

@@ -17,17 +17,5 @@ export default function* () {
             }
         }),
 
-        takeLatest(Action.Types.TOPICS_PHOTO, function*({data}) {
-            console.log("[Saga TOPICS_PHOTO] data", data);
-
-            const result = yield call(API.topicsPhotos, {data})
-            console.log("[Saga TOPICS_PHOTO] API", result);
-
-            if (result) {
-                yield put(Action.Creators.updateState({
-                    topics: result.data
-                }))
-            }
-        }),
     ])
 }

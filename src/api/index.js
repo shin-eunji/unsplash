@@ -5,7 +5,7 @@ const FetchConsts = {
     POST: 'post'
 }
 
-const request = async (url, method, data) => {
+const request = async (url, method, data = {}) => {
 
 
     try {
@@ -44,7 +44,8 @@ const API = {
     listPhotos: (data) => Fetch.get(`https://api.unsplash.com/photos`, data),
     searchPhotos: (data) => Fetch.get(`https://api.unsplash.com/search/photos`, data),
     getPhotos: (data) => Fetch.get(`https://api.unsplash.com/search/photos`, data),
-    topicsPhotos: (data) => Fetch.get(`https://api.unsplash.com/topics`, data),
+    getTopics: (data) => Fetch.get(`https://api.unsplash.com/topics`, data),
+    getTopicsBySlug: (slug) => Fetch.get(`https://api.unsplash.com/topics/${slug}`),
     collection: (data) => Fetch.get('https://api.unsplash.com/search/collections', data)
 
 

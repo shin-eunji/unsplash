@@ -1,22 +1,21 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import {appActions, photoActions, searchActions} from "../../../redux/actionCreators";
-import {useSelector} from "react-redux";
+import {Switch, Route} from "react-router-dom";
+import List from "./List";
 
 function Search (props) {
 
-    const {
-    } = props;
-
+    const {} = props;
 
     return (
         <Container>
-
+            <Switch>
+                <Route exact path={'/photos'} component={List}/>
+            </Switch>
         </Container>
     )
 }
 
 const Container = styled.div`
 `
-
 export default Search;

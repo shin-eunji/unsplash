@@ -6,7 +6,7 @@ import {navigate} from "../../../lib/History";
 import {pxToRem} from "../../../common/Text/Text.Styled";
 import Facebook from "../../components/Auth/Facebook";
 import {useForm} from "react-hook-form";
-import Input from "../../components/Form/Input";
+import Input from "../../containers/Home/Form/Input";
 import {authActions} from "../../../redux/actionCreators";
 import Validation, {ValidationTypes} from "../../../lib/Validate";
 

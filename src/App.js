@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Routes from "./Routes";
 import {HISTORY} from './lib/History'
 import {appActions} from "./redux/actionCreators";
+import {pxToRem} from "./common/Text/Text.Styled";
 
 function App (props) {
 
@@ -26,5 +27,7 @@ function App (props) {
 }
 
 const Container = styled.div`
+    position:relative;
+    top: ${pxToRem(112)};
 `
 export default App;
