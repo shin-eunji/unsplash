@@ -14,18 +14,12 @@ import Index from "./views/components/Header/Lnb";
 import TopicsLnb from "./views/components/Header/Lnb/TopicsLnb";
 import Details from "./views/components/Topics/Details";
 import Topics from "./views/pages/Topics";
-import Search from "./views/pages/Search";
 import List from "./views/pages/Search/List";
-import {useSelector} from "react-redux";
-import {searchActions} from "./redux/actionCreators";
-
-
 
 function Routes (props) {
 
     const {
         location,
-        match
     } = props;
 
     const RenderHeader = (pathname) => {
@@ -33,9 +27,9 @@ function Routes (props) {
             default: return <Header><Index/></Header>
             case '/collections': return <Header/>
             case '/t': return <Header><TopicsLnb/></Header>
+            case '/s/photos': return <Header><TopicsLnb/></Header>
         }
     }
-    const query = match.params.query;
 
     return (
         <Container>

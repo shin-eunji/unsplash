@@ -20,20 +20,5 @@ export default function*() {
                 navigate(`/s/photos/${data?.query}`)
             }
         }),
-        takeLatest(Action.Types.GET_TO_KEYWORD, function*({keyword}) {
-            const result = yield call(API.getToKeyword, keyword)
-            console.log("[Saga GET_TO_KEYWORD] API", result);
-
-            if (result) {
-
-                const {search} = yield select()
-                yield put(Action.Creators.updateState({
-                    detail: {
-                        ...search.detail,
-                        [result?.data?.query]: result.data
-                    }
-                }))
-            }
-        })
     ])
 }

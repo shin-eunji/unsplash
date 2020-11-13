@@ -49,6 +49,7 @@ const Container = styled.div`
     padding: ${pxToRem(32)}${pxToRem(120)} ${pxToRem(100)};
     z-index: 1000;
     cursor: zoom-out;
+    overflow-y: scroll;
 `
 const SContentContainer = styled(ContentContainer)`
     position:absolute;
@@ -69,7 +70,7 @@ const SContentContainer = styled(ContentContainer)`
     cursor: default;
 `;
 const CloseButton = styled.button`
-    position: absolute;
+    position: fixed;
     top: ${pxToRem(10)};
     left: ${pxToRem(10)};
     color: #fff;
