@@ -5,6 +5,7 @@ import {ContentContainer} from "../../../common/Layout/Components.Styled";
 import {topicsActions} from "../../../redux/actionCreators";
 import {useSelector} from "react-redux";
 import ListItem from "./ListItem";
+import TopicsDetails from "./TopicsDetails";
 
 function Details (props) {
 
@@ -23,16 +24,19 @@ function Details (props) {
         }
     }, [slug])
 
-
-
-
     return (
         <Container>
             <SContentContainer>
-                <Text>
-                    <Title>{data?.title}</Title>
-                    <Description>{data?.description}</Description>
-                </Text>
+                <Header>
+                    <Text>
+                        <Title>{data?.title}</Title>
+                        <Description>{data?.description}</Description>
+
+                    </Text>
+                    <TopicsDetails data={data}/>
+                </Header>
+
+
 
                 <List>
                     {
@@ -45,8 +49,15 @@ function Details (props) {
 }
 
 const Container = styled.div`
+    position:relative;
+    top: ${pxToRem(112)};
 `
 const SContentContainer = styled(ContentContainer)`
+`;
+const Header = styled.div`
+    display:flex;
+    align-items:flex-start;
+    justify-content: space-between;
 `;
 const Text = styled.div`
     display:flex;
@@ -58,9 +69,12 @@ const Title = styled.div`
     font-size: ${pxToRem(46)};
     font-weight: 700;
     line-height: 1.2;
+    margin-bottom: ${pxToRem(16)};
 `;
 const Description = styled.div`
-    
+    max-width: ${pxToRem(620)};
+    margin: 0 0 ${pxToRem(24)};
+    line-height: 1.6;
 `;
 const List = styled.div`
     line-height: 0;

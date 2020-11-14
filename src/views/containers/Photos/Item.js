@@ -62,8 +62,8 @@ const Container = styled.div`
     width: 100%;
     color: #60544D;
     height: auto;
-    margin-bottom: ${pxToRem(20)};
     cursor: zoom-in;
+    margin-bottom: ${pxToRem(20)};
 `;
 const Content = styled.div`
     position:relative;

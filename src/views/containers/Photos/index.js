@@ -46,6 +46,5 @@ const Container = styled.div`
     column-gap: ${pxToRem(20)};
 `;
 const List = styled.div`
-    
 `;
 export default Photos;

@@ -5,6 +5,7 @@ import {searchActions} from "../../../redux/actionCreators";
 import Tags from "../../components/Search/Tags";
 import {pxToRem} from "../../../common/Text/Text.Styled";
 import {ContentContainer} from "../../../common/Layout/Components.Styled";
+import PhotoList from "../../components/Search/PhotoList";
 
 function Search(props) {
 
@@ -27,20 +28,11 @@ function Search(props) {
 
                 <Header>
                     <Title>{query}</Title>
-                    <Tag>
-                        {
-                            list.map((item, index) => <Tags key={index} {...item} />)
-                        }
-                    </Tag>
                 </Header>
 
                 <Photos>
                     {
-                        list.map((item, index) => (
-                            <Photo>
-                                <img src={item.urls.small} alt={item.alt_description}/>
-                            </Photo>
-                        ))
+                        list.map((item, index) => (<PhotoList key={index} {...item}/>))
                     }
                 </Photos>
             </SContentContainer>
@@ -49,6 +41,8 @@ function Search(props) {
 }
 
 const Container = styled.div`
+    position:relative;
+    top: ${pxToRem(112)};
 `
 const SContentContainer = styled(ContentContainer)`
     
@@ -62,11 +56,6 @@ const Title = styled.h2`
     line-height: 1.2;
     margin-bottom: ${pxToRem(16)};
 `;
-const Tag = styled.div`
-    display:flex;
-    overflow: hidden;
-    overflow-x: scroll;
-`;
 const Photos = styled.div`
     line-height: 0;
     margin-top: 10px;
@@ -76,7 +65,5 @@ const Photos = styled.div`
     -moz-column-gap: 0px;
     column-count: 3;
     column-gap: ${pxToRem(20)};
-`;
-const Photo = styled.div`
 `;
 export default Search;

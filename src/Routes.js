@@ -42,6 +42,7 @@ function Routes (props) {
             case '/s/photos': return null
             case '/sign/login': return null
             case '/sign/join': return null
+            case '/s/photos/:query': return null
         }
     }
 
