@@ -46,6 +46,7 @@ const SContentContainer = styled(ContentContainer)`
     width: 100%;
     height: ${pxToRem(56)};
     justify-content: flex-start;
+    box-shadow: 0 5px 5px rgba(0,0,0,.15);
 `
 const Item = styled(TextLink)`
     position:relative;

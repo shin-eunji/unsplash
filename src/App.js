@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import Routes from "./Routes";
 import {HISTORY} from './lib/History'
@@ -19,6 +19,20 @@ function App (props) {
         })
     },[])
 
+    const useTitle = () => {
+        const [title, setTitle] = useState(null);
+
+        const updateTitle = () => {
+            const htmlTitle = document.querySelector("title");
+            htmlTitle.innerHTML = title;
+        };
+        useEffect(updateTitle, [title]);
+
+        return setTitle;
+    };
+
+    const changeTitle = useTitle();
+
     return (
         <Container>
             <Routes />
@@ -27,7 +41,5 @@ function App (props) {
 }
 
 const Container = styled.div`
-    position:relative;
-    top: ${pxToRem(112)};
 `
 export default App;

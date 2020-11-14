@@ -14,7 +14,9 @@ import Index from "./views/components/Header/Lnb";
 import TopicsLnb from "./views/components/Header/Lnb/TopicsLnb";
 import Details from "./views/components/Topics/Details";
 import Topics from "./views/pages/Topics";
-import List from "./views/pages/Search/List";
+import Search from "./views/pages/Search";
+import Footer from "./views/containers/Home/Footer";
+import Lnb from "./views/components/Header/Lnb";
 
 function Routes (props) {
 
@@ -22,34 +24,46 @@ function Routes (props) {
         location,
     } = props;
 
-    const RenderHeader = (pathname) => {
+    const RenderHeader = ({pathname}) => {
         switch(pathname) {
-            default: return <Header><Index/></Header>
+            default: return <Header><Lnb/></Header>
+            case '/explore': return <Header/>
             case '/collections': return <Header/>
-            case '/t': return <Header><TopicsLnb/></Header>
             case '/s/photos': return <Header><TopicsLnb/></Header>
+            case '/sign/login': return null
+            case '/sign/join': return null
         }
     }
+
+    const RenderFooter = ({pathname}) => {
+        switch(pathname) {
+            default: return <Footer/>
+            case '/explore': return null
+            case '/s/photos': return null
+            case '/sign/login': return null
+            case '/sign/join': return null
+        }
+    }
+
 
     return (
         <Container>
             <RenderHeader pathname={location.pathname}/>
             <Switch>
-                <Route exact path={'/'} component={Home} />
+                <Route exact path={'/'} component={Home}/>
 
                 <Route exact path={'/t'} component={Topics} />
                 <Route exact path={'/t/:slug'} component={Details} />
 
-                <Route exact path={`/s/photos/:query`} component={List} />
+                <Route exact path={`/s/photos/:query`} component={Search} />
 
                 <Route exact path={'/explore'} component={Explore} />
 
-                <Route exact path={'/Sign'} component={Sign} />
+                <Route exact path={'/sign'} component={Sign} />
                 <Route path={'/sign/login'} component={SignIn}/>
                 <Route path={'/sign/join'} component={SignUp}/>
-
-
             </Switch>
+            <RenderFooter pathname={location.pathname}/>
         </Container>
     )
 }

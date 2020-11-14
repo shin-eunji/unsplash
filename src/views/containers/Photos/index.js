@@ -16,6 +16,8 @@ function Photos() {
         photoActions.getPhotos()
     }, [])
 
+
+
     return (
         <SContentContainer>
             <Container>

@@ -22,7 +22,6 @@ const Container = styled.div`
     flex-direction:column;
     width: 100%;
     background: #fff;
-    box-shadow: 0 5px 5px rgba(0,0,0,.15);
     z-index: 100;
 `
 export default withRouter(Header);

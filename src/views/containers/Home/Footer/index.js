@@ -10,9 +10,7 @@ import {sitemap} from "./Sitemap";
 
 import Site from "./Site";
 
-function Footer (props) {
-
-    const {} = props;
+function Footer ({children}) {
 
     return (
         <Container>
@@ -43,6 +41,7 @@ function Footer (props) {
 
 
                 </Info>
+                {children}
             </SContentContainer>
         </Container>
     )
