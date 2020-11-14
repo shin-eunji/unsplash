@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import {generateMedia} from "styled-media-query";
+import {pxToRem} from "../Text/Text.Styled";
 
 export const customMedia = generateMedia({
     desktop: "1170px",
@@ -8,6 +9,7 @@ export const customMedia = generateMedia({
 });
 
 export const ContentContainer = styled.div`
+    position:relative;
     width: 1320px;
     padding: 0 20px;
     margin: 0 auto;

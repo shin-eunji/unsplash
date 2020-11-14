@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 import Visual from "../../components/Visual";
 import Photos from "../../containers/Photos";
+import {pxToRem} from "../../../common/Text/Text.Styled";
 
 function Home (props) {
 
@@ -19,7 +20,7 @@ function Home (props) {
 
 const Container = styled.div`
     position:relative;
-    top: 0;
+    top: ${pxToRem(112)};
     right: 0;
     height: 100%;
 `
