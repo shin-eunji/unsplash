@@ -20,6 +20,7 @@ function Search(props) {
     }, [list])
 
     const query = match.params.query;
+    const collections = match.params.collections;
 
 
     return (
@@ -28,6 +29,7 @@ function Search(props) {
 
                 <Header>
                     <Title>{query}</Title>
+                    {collections}
                 </Header>
 
                 <Photos>

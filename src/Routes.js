@@ -17,19 +17,23 @@ import Topics from "./views/pages/Topics";
 import Search from "./views/pages/Search";
 import Footer from "./views/containers/Home/Footer";
 import Lnb from "./views/components/Header/Lnb";
+import SearchLnb from "./views/components/Header/Lnb/SearchLnb";
 
 function Routes (props) {
 
     const {
         location,
+        match
     } = props;
+
+    const query = match.params.query;
 
     const RenderHeader = ({pathname}) => {
         switch(pathname) {
             default: return <Header><Lnb/></Header>
             case '/explore': return <Header/>
             case '/collections': return <Header/>
-            case '/s/photos': return <Header><TopicsLnb/></Header>
+            case `/s/photos/${query}`: return null
             case '/sign/login': return null
             case '/sign/join': return null
         }
