@@ -7,14 +7,12 @@ function PhotoList (props) {
 
     const {
         urls,
-        current_user_collections,
         alt_description,
         tags
     } = props;
 
     return (
         <Container >
-            <Text>{current_user_collections}</Text>
             <img src={urls.small} alt={alt_description}/>
             <Tag>
                 {

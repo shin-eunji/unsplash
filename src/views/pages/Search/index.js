@@ -29,7 +29,8 @@ function Search(props) {
 
                 <Header>
                     <Title>{query}</Title>
-                    {collections}
+                    <Collections>{collections}</Collections>
+
                 </Header>
 
                 <Photos>
@@ -67,5 +68,8 @@ const Photos = styled.div`
     -moz-column-gap: 0px;
     column-count: 3;
     column-gap: ${pxToRem(20)};
+`;
+const Collections = styled.div`
+    
 `;
 export default Search;
