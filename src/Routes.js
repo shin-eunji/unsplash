@@ -33,7 +33,7 @@ function Routes (props) {
             default: return <Header><Lnb/></Header>
             case '/explore': return <Header/>
             case '/collections': return <Header/>
-            case `/s/photos/${query}`: return null
+            case `/s/photos/:query`: return <Header><SearchLnb/></Header>
             case '/sign/login': return null
             case '/sign/join': return null
         }
