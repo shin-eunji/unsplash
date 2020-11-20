@@ -36,7 +36,6 @@ function Item(props) {
 
                 {
                     sponsorship && <Sponsorship user={user} sponsorship={sponsorship} />
-
                 }
 
                 {
