@@ -1,18 +1,23 @@
 import {all, takeLatest, put, call} from 'redux-saga/effects'
 import {Action} from './redux'
 import API from "../../api";
+import {select} from "@redux-saga/core/effects";
 
 export default function* () {
     yield all([
         takeLatest(Action.Types.GET_PHOTOS, function*({data}) {
-            console.log("[Saga GET_PHOTOS] data", data);
+            // console.log("[Saga GET_PHOTOS] data", data);
 
             const result = yield call(API.getPhotos, data)
             console.log("[Saga GET_PHOTOS] API", result);
 
             if (result) {
+                const state = yield select();
                 yield put(Action.Creators.updateState({
-                    list: result.data
+                    list: [
+                        ...state.photo.list,
+                        ...result.data
+                    ]
                 }))
             }
         }),

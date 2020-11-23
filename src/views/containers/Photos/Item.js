@@ -78,7 +78,6 @@ const Content = styled.div`
         bottom: 0;
         display: block;
         width: 100%;
-        height: auto;
         list-style: none;
         object-fit: cover;
     }

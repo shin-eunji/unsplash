@@ -11,7 +11,6 @@ function App (props) {
     } = props;
 
     useEffect(() => {
-        appActions.updateState()
         HISTORY.listen((location, action) => {
             if(action === 'PUSH') {
                 window.scrollTo(0, 0)

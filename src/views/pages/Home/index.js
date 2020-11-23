@@ -5,15 +5,14 @@ import Visual from "../../components/Visual";
 import Photos from "../../containers/Photos";
 import {pxToRem} from "../../../common/Text/Text.Styled";
 
-function Home (props) {
+function Home(props) {
 
-    const {
-    } = props;
+    const {} = props;
 
     return (
         <Container>
-            <Visual />
-            <Photos />
+            <Visual/>
+            <Photos/>
         </Container>
     )
 }

@@ -6,6 +6,7 @@ import {ContentContainer} from "../../../common/Layout/Components.Styled";
 import {category} from "../../components/Category/CategoryList";
 
 import Category from "../../components/Category/Category";
+import Photos from "../../containers/Photos";
 
 function Explore(props) {
 
@@ -24,6 +25,7 @@ function Explore(props) {
                     <Category data={category}/>
                 </Contents>
                 <SubTitle>Free high-resolution Unsplash photos</SubTitle>
+                <Photos />
             </SContentContainer>
         </Container>
     )
