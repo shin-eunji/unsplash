@@ -17,7 +17,7 @@ function Photos() {
 
     useEffect(() => {
         photoActions.getPhotos({
-            page: page++,
+            page: page + 1,
             per_page: 20,
         })
     }, [])
