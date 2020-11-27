@@ -2,38 +2,32 @@ import React, {useEffect, useState} from 'react';
 import styled from 'styled-components';
 import {Route, Switch, withRouter} from "react-router-dom";
 
-import Home from "./views/pages/Home";
+import Header from "./views/components/Header";
+import Footer from "./views/containers/Home/Footer";
 
+import Home from "./views/pages/Home";
+import Lnb from "./views/components/Header/Lnb";
 import Sign from "./views/pages/Sign";
 import SignIn from "./views/pages/Sign/SignIn";
 import SignUp from "./views/pages/Sign/SignUp";
-
 import Explore from "./views/pages/Explore";
-import Header from "./views/components/Header";
-import Index from "./views/components/Header/Lnb";
-import TopicsLnb from "./views/components/Header/Lnb/TopicsLnb";
 import Details from "./views/components/Topics/Details";
 import Topics from "./views/pages/Topics";
 import Search from "./views/pages/Search";
-import Footer from "./views/containers/Home/Footer";
-import Lnb from "./views/components/Header/Lnb";
-import SearchLnb from "./views/components/Header/Lnb/SearchLnb";
 
 function Routes (props) {
 
     const {
         location,
-        match
     } = props;
 
-    const query = match.params.query;
 
     const RenderHeader = ({pathname}) => {
         switch(pathname) {
             default: return <Header><Lnb/></Header>
             case '/explore': return <Header/>
             case '/collections': return <Header/>
-            case `/s/photos/${query}`: return null
+            case '/s/photos/:query': return <Header/>
             case '/sign/login': return null
             case '/sign/join': return null
         }
@@ -43,7 +37,7 @@ function Routes (props) {
         switch(pathname) {
             default: return <Footer/>
             case '/explore': return null
-            case '/s/photos': return null
+            case '/s/photos/:query': return null
             case '/sign/login': return null
             case '/sign/join': return null
             case '/s/photos/:query': return null
