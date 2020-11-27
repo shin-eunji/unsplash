@@ -31,7 +31,7 @@ function Sponsorship (props) {
 const Container = styled.div`
     position:absolute;
     left: ${pxToRem(20)};
-    bottom: ${pxToRem(20)};
+    bottom: ${pxToRem(18)};
     z-index: 10;
 `
 const Profile = styled.div`

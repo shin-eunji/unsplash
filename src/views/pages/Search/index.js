@@ -2,10 +2,10 @@ import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import {useSelector} from "react-redux";
 import {searchActions} from "../../../redux/actionCreators";
-import Tags from "../../components/Search/Tags";
 import {pxToRem} from "../../../common/Text/Text.Styled";
 import {ContentContainer} from "../../../common/Layout/Components.Styled";
 import PhotoList from "../../components/Search/PhotoList";
+import SearchLnb from "../../components/Header/Lnb/SearchLnb";
 
 function Search(props) {
 
@@ -26,7 +26,7 @@ function Search(props) {
     return (
         <Container>
             <SContentContainer>
-
+                <SearchLnb/>
                 <Header>
                     <Title>{query}</Title>
                     <Collections>{collections}</Collections>
