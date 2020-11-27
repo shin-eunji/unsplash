@@ -5,15 +5,14 @@ import Visual from "../../components/Visual";
 import Photos from "../../containers/Photos";
 import {pxToRem} from "../../../common/Text/Text.Styled";
 
-function Home (props) {
+function Home(props) {
 
-    const {
-    } = props;
+    const {} = props;
 
     return (
         <Container>
-            <Visual />
-            <Photos />
+            <Visual/>
+            <Photos/>
         </Container>
     )
 }
@@ -21,7 +20,8 @@ function Home (props) {
 const Container = styled.div`
     position:relative;
     top: ${pxToRem(112)};
-    right: 0;
+    right: 0; 
+    lfdjalsf:fs 
     height: 100%;
 `
 export default Home;

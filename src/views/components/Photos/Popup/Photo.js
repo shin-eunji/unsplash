@@ -39,8 +39,9 @@ function Photo (props) {
 const Container = styled.div`
     display:flex;
     flex: 1;
-    flex-direction:column;
     width: 100%;
+    height: auto;
+    flex-direction:column;
     justify-content:center;
 `
 const PhotoImage = styled.div`
@@ -50,8 +51,7 @@ const PhotoImage = styled.div`
     justify-content:center;
     padding: ${pxToRem(20)};
     img {
-        width: auto;
-        height: auto;
+            height: 100%;
     }
 `;
 const Thumbnail = styled.div`
@@ -59,6 +59,7 @@ const Thumbnail = styled.div`
     display:flex;
     align-items:center;
     justify-content: space-between;
+    width: 100%;
 `;
 const Map = styled.div`
     
