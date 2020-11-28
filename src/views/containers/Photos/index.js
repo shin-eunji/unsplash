@@ -1,4 +1,4 @@
-import React, {useEffect, _} from 'react';
+import React, {useEffect, _, useState} from 'react';
 import styled from 'styled-components';
 
 import {pxToRem} from "../../../common/Text/Text.Styled";
@@ -7,25 +7,28 @@ import {photoActions} from "../../../redux/actionCreators";
 
 import Item from "./Item";
 import {ContentContainer} from "../../../common/Layout/Components.Styled";
-import InfiniteScroll from "../../components/infinitScroll";
+import InfiniteScroll from "../../components/InfinitScroll";
 
-const page = 1;
+let page = 1;
 
 function Photos() {
 
     const {list} = useSelector(state => state.photo);
 
-    useEffect(() => {
-        photoActions.getPhotos({
-            page: page + 1,
-            per_page: 20,
-        })
-    }, [])
+    const [justFetching, setJustFetching] = useState(false)
+
+    // useEffect(() => {
+    //     photoActions.getPhotos({
+    //         page: page++,
+    //         per_page: 20,
+    //     })
+    // }, [])
 
     const inView = () => {
-        if(!_.isEmpty(list)) {
+        if(!justFetching) {
+            setJustFetching(true);
             photoActions.getPhotos({
-                page: 1,
+                page: page++,
                 per_page: 20,
             })
         }
@@ -34,7 +37,12 @@ function Photos() {
 
 
     return (
-        <InfiniteScroll isInView={inView}>
+        <InfiniteScroll isInView={inView} isOutView={() => {
+            console.log("outView");
+            setTimeout(() => {
+                setJustFetching(false)
+            }, 3000)
+        }}>
             <SContentContainer>
                 <Container>
                     <List>
