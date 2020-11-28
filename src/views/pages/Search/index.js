@@ -26,7 +26,7 @@ function Search(props) {
     return (
         <Container>
             <SContentContainer>
-                <SearchLnb/>
+                {/*<SearchLnb/>*/}
                 <Header>
                     <Title>{query}</Title>
                     <Collections>{collections}</Collections>
