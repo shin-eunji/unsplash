@@ -14,6 +14,7 @@ import Explore from "./views/pages/Explore";
 import Details from "./views/components/Topics/Details";
 import Topics from "./views/pages/Topics";
 import Search from "./views/pages/Search";
+import SearchLnb from "./views/components/Header/Lnb/SearchLnb";
 
 function Routes (props) {
 
@@ -23,13 +24,12 @@ function Routes (props) {
 
 
     const RenderHeader = ({pathname}) => {
-        switch(pathname) {
-            default: return <Header><Lnb/></Header>
-            case '/explore': return <Header/>
-            case '/collections': return <Header/>
-            case '/s/photos/:query': return <Header/>
-            case '/sign/login': return null
-            case '/sign/join': return null
+        if(pathname === '/explore') {
+            return <Header/>
+        } else if(pathname.startsWith('/s/photos/')) {
+            return <Header><SearchLnb/></Header>
+        } else {
+            return <Header><Lnb/></Header>
         }
     }
 
@@ -40,7 +40,6 @@ function Routes (props) {
             case '/s/photos/:query': return null
             case '/sign/login': return null
             case '/sign/join': return null
-            case '/s/photos/:query': return null
         }
     }
 

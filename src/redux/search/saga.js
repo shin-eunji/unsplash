@@ -14,10 +14,8 @@ export default function*() {
 
             if(result) {
                 yield put(Action.Creators.updateState({
-                    list: result.data.results
+                    list: result.data
                 }))
-                const data = result?.config?.params;
-                navigate(`/s/photos/${data?.query}`)
             }
         }),
     ])

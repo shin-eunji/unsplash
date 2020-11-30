@@ -1,10 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import SearchForm from "../../containers/Search/Form";
-import {Color} from "../../../common/Color/Color.Styled";
-import {pxToRem} from "../../../common/Text/Text.Styled";
+import SearchForm from "../../Search/Form";
+import {Color} from "../../../../common/Color/Color.Styled";
+import {pxToRem} from "../../../../common/Text/Text.Styled";
 import Thumbnail from "./Thumbnail";
 import Tag from "./Tag";
+
 
 
 function Visual(props) {
@@ -21,7 +22,7 @@ function Visual(props) {
                 </Text>
 
                 <SearchContainer>
-                    <SearchForm/>
+                    <SearchForm shape={'square'}/>
                 </SearchContainer>
 
                 <Tag/>

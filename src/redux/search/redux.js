@@ -1,7 +1,9 @@
 import {createActions, createReducer} from 'reduxsauce';
 
 const initialState = {
-    list: [],
+    list: {
+        results: []
+    },
     detail: {}
 }
 

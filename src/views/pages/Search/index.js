@@ -5,28 +5,51 @@ import {searchActions} from "../../../redux/actionCreators";
 import {pxToRem} from "../../../common/Text/Text.Styled";
 import {ContentContainer} from "../../../common/Layout/Components.Styled";
 import PhotoList from "../../components/Search/PhotoList";
-import SearchLnb from "../../components/Header/Lnb/SearchLnb";
+import qs from 'qs';
+import {navigate} from "../../../lib/History";
 
 function Search(props) {
 
     const {
-        match
+        match,
+        location
     } = props;
-
-    const {list = []} = useSelector(state => state.search);
-
-    useEffect(() => {
-        searchActions.searchPhotos();
-    }, [list])
+    
 
     const query = match.params.query;
     const collections = match.params.collections;
+    const values = qs.parse(location.search, {ignoreQueryPrefix: true})
+    const page = Number(values.page) || 1;
+    const per_page = Number(values.per_page) || 5;
 
+    const {list} = useSelector(state => state.search);
+
+    const isFirstPage = page === 1;
+    const isLastPage = page >= list.total_pages;
+    const isCurrentPage = page;
+
+
+    useEffect(() => {
+        searchActions.searchPhotos({
+            query,
+            page,
+            per_page
+        });
+    }, [query, page, per_page])
+
+    const handlePage = (page) => {
+        if(isCurrentPage !== page) {
+            navigate(`/s/photos/beach?${qs.stringify({
+                ...values,
+                page
+            })}`)
+        }
+    }
 
     return (
         <Container>
             <SContentContainer>
-                {/*<SearchLnb/>*/}
+
                 <Header>
                     <Title>{query}</Title>
                     <Collections>{collections}</Collections>
@@ -35,7 +58,7 @@ function Search(props) {
 
                 <Photos>
                     {
-                        list.map((item, index) => (<PhotoList key={index} {...item}/>))
+                        list.results.map((item, index) => (<PhotoList key={index} {...item}/>))
                     }
                 </Photos>
             </SContentContainer>
@@ -58,6 +81,7 @@ const Title = styled.h2`
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: ${pxToRem(16)};
+    text-transform: capitalize;
 `;
 const Photos = styled.div`
     line-height: 0;

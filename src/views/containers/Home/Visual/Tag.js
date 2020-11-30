@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import {pxToRem} from "../../../common/Text/Text.Styled";
-import {Color} from "../../../common/Color/Color.Styled";
+import {pxToRem} from "../../../../common/Text/Text.Styled";
+import {Color} from "../../../../common/Color/Color.Styled";
 
 function Tag (props) {
 

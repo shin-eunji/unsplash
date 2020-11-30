@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {pxToRem} from "../../../common/Text/Text.Styled";
+import {pxToRem} from "../../../../common/Text/Text.Styled";
 
 function Thumbnail (props) {
 

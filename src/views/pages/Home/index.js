@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Visual from "../../components/Visual";
+import Visual from "../../containers/Home/Visual";
 import Photos from "../../containers/Photos";
 import {pxToRem} from "../../../common/Text/Text.Styled";
 

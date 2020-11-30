@@ -1,27 +1,25 @@
 import React, {useState} from 'react';
+import cn from 'classnames';
 import styled from 'styled-components';
 import {AiOutlineSearch} from 'react-icons/ai';
 import {pxToRem} from "../../../../common/Text/Text.Styled";
 import {navigate} from "../../../../lib/History";
-import {searchActions} from "../../../../redux/actionCreators";
-import {useSelector} from "react-redux";
 
 function SearchForm(props) {
 
-    const {} = props;
+    const {
+        shape = 'round',
+        onSubmit = () => {}
+    } = props;
 
-    const [values, setValue] = useState("")
+    const [value, setValue] = useState("")
 
     const handleChange = (e) => {
-        setValue({
-            ...values,
-            query: e.target.value
-        })
+        setValue(e.target.value)
     }
 
     const handleSubmit = () => {
-        console.log("values", values);
-        searchActions.searchPhotos(values)
+        navigate(`/s/photos/${value}`)
     }
 
     const handleKeyPress = (e) => {
@@ -31,24 +29,23 @@ function SearchForm(props) {
     }
 
     return (
-        <Container>
+        <Container classNames={cn('SearchForm', shape)}>
+            <Label>
             <Icon onClick={handleSubmit} />
             <Input name="photo"
                    type="text"
+                   value={value}
                    placeholder="Search free high-resolution photos"
                    onChange={handleChange}
                    onKeyPress={handleKeyPress}
             />
+            </Label>
         </Container>
     )
 }
 
 const Container = styled.div`
-    display:flex;
-    align-items:center;
-    justify-content: space-between;
     width: 100%;
-    padding: ${pxToRem(4)} ${pxToRem(10)};
 `
 const Icon = styled(AiOutlineSearch)`
     display:flex;
@@ -61,6 +58,20 @@ const Icon = styled(AiOutlineSearch)`
     color: #767676;
     cursor: pointer;
 `;
+const Label = styled.label`
+    display:flex;
+    align-items:center;
+    justify-content: space-between;
+    width: 100%;
+    padding: ${pxToRem(4)} ${pxToRem(10)};
+    
+    .round & {
+      
+    }
+    .square & {
+    
+    }
+`;
 const Input = styled.input`
     flex: 1;
     height: ${pxToRem(30)};
@@ -68,4 +79,5 @@ const Input = styled.input`
     background: none;
     margin-left: ${pxToRem(10)};
 `;
+
 export default SearchForm;

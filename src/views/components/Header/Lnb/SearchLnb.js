@@ -18,7 +18,7 @@ function SearchLnb (props) {
     return (
         <Container>
             {
-                list.map((item, index) => (
+                list.results.map((item, index) => (
                     <div key={index} {...item}>
                         <SearchList>
                             <List>photos {item.total_photos}</List>
