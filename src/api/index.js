@@ -16,6 +16,7 @@ const request = async (url, method, data = {}) => {
 
         }
         if(method === FetchConsts.GET) {
+            data.client_id = 't_jbP7JejOj1keyZ7UiEl1BZcoPHG3vxmy3rPUGhVRc'
             config.params = data
         } else {
             config.data = data
