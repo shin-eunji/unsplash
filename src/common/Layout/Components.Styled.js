@@ -15,10 +15,9 @@ export const ContentContainer = styled.div`
     margin: 0 auto;
     
     ${customMedia.lessThan('desktop')`
-        max-width: 830px;
+        max-width: 1170px;
     `}
     ${customMedia.lessThan('tablet')`
-        max-width: 830px;
         width: 100%;    
     `}
     ${customMedia.lessThan('mobile')`
