@@ -33,7 +33,7 @@ function Search(props) {
         searchActions.searchPhotos({
             query,
             page,
-            per_page
+            per_page,
         });
     }, [query, page, per_page])
 
@@ -49,10 +49,8 @@ function Search(props) {
     return (
         <Container>
             <SContentContainer>
-
                 <Header>
                     <Title>{query}</Title>
-                    <Collections>{collections}</Collections>
 
                 </Header>
 

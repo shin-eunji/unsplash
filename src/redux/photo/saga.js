@@ -30,5 +30,20 @@ export default function* () {
 
         }),
 
+        takeLatest(Action.Types.PHOTO_RANDOM, function*({data}) {
+            console.log("[Saga PHOTO_RANDOM] data", data);
+
+            const result = yield call(API.photoRandom, {data})
+            console.log("[Saga PHOTO_RANDOM] API", result);
+
+        }),
+
+        takeLatest(Action.Types.PHOTO_LIKE, function*({data}) {
+            console.log("[Saga PHOTO_LIKE] data", data);
+
+            const result = yield call(API.photoLike, {data})
+            console.log("[Saga PHOTO_LIKE] API", result);
+
+        }),
     ])
 }

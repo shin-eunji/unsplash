@@ -9,6 +9,8 @@ export const Action = createActions({
     updateState: ['state'],
     getPhotos: ['data'],
     getPhotoById: ['data'],
+    photoRandom: ['data'],
+    photoLike: ['data']
 }, {prefix: 'PHOTO/'})
 
 export const reducer = createReducer(initialState, {

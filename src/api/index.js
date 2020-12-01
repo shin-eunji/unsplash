@@ -43,11 +43,14 @@ const Fetch = {
 const API = {
     getPhotos: (data) => Fetch.get(`https://api.unsplash.com/photos`, data),
     getPhotoById: (id) => Fetch.get(`https://api.unsplash.com/photos/${id}`),
+    photoRandom: (data) => Fetch.get(`https://api.unsplash.com/photos/random`, data),
+    photoLike: (id) => Fetch.get(`https://api.unsplash.com/photos/${id}/like`),
 
     getTopics: (data) => Fetch.get(`https://api.unsplash.com/topics`, data),
     getTopicsBySlug: (slug) => Fetch.get(`https://api.unsplash.com/topics/${slug}`),
 
     searchPhotos: (data) => Fetch.get(`https://api.unsplash.com/search/photos`, data),
+    searchCollections: (data) => Fetch.get(`https://api.unsplash.com/search/collections`, data),
 }
 
 export default API;
