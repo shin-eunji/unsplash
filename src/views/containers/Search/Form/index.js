@@ -78,6 +78,8 @@ const Input = styled.input`
     border: none;
     background: none;
     margin-left: ${pxToRem(10)};
+    outline: none;
+    background: none;
 `;
 
 export default SearchForm;
